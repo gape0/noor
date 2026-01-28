@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Happy Valentine Noor 🤍</title>
+<title>Happy Valentine 💘</title>
 
 <style>
 * { box-sizing: border-box; }
@@ -19,16 +19,6 @@ body {
 header {
   padding: 40px 20px;
   background: linear-gradient(135deg, #ff5f8f, #c77dff);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-header h1 {
-  margin: 0;
-  font-size: 2.2rem;
-}
-
-header p {
-  opacity: 0.9;
 }
 
 nav button {
@@ -36,15 +26,9 @@ nav button {
   padding: 12px 22px;
   border: none;
   border-radius: 999px;
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.25);
   color: white;
-  font-size: 15px;
   cursor: pointer;
-  backdrop-filter: blur(5px);
-}
-
-nav button:hover {
-  background: rgba(255,255,255,0.35);
 }
 
 section {
@@ -57,14 +41,11 @@ section {
 section.active { display: block; }
 
 .card {
-  background: rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.08);
   border-radius: 24px;
   padding: 30px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
   margin-bottom: 30px;
 }
-
-h2 { margin-top: 0; }
 
 input, select {
   padding: 12px;
@@ -89,27 +70,22 @@ button.choice {
   width: 90%;
 }
 
-button.choice:hover {
-  filter: brightness(1.1);
-}
-
 img {
   max-width: 90%;
   border-radius: 20px;
-  margin-top: 20px;
 }
 
 /* Floating hearts */
 .heart {
   position: fixed;
   bottom: -20px;
-  font-size: 20px;
-  animation: floatUp 8s linear infinite;
-  opacity: 0.6;
+  font-size: 22px;
+  animation: floatUp 9s linear forwards;
+  opacity: 0.7;
 }
 
 @keyframes floatUp {
-  from { transform: translateY(0); opacity: 0.6; }
+  from { transform: translateY(0); opacity: 0.7; }
   to { transform: translateY(-110vh); opacity: 0; }
 }
 </style>
@@ -118,8 +94,8 @@ img {
 <body>
 
 <header>
-  <h1>Happy Valentine Noor 🤍</h1>
-  <p>This is a little thing I made for you</p>
+  <h1>Happy Valentine 💘</h1>
+  <p>This is our little world</p>
   <nav>
     <button onclick="showSection('home')">Home</button>
     <button onclick="showSection('love')">Things I Love</button>
@@ -131,17 +107,13 @@ img {
 <section id="home" class="active">
   <div class="card">
     <h2>Welcome 💕</h2>
-    <p>
-      I wanted one place where everything about us could live.<br>
-      No rush. No rules. Just you.
-    </p>
+    <p>Take your time. Everything here is for you.</p>
   </div>
 </section>
 
 <section id="love">
   <div class="card">
     <h2>Things I Love About You 🤍</h2>
-    <p>Open it whenever you feel like it.</p>
     <a href="PASTE_GOOGLE_DOC_LINK_HERE" target="_blank">
       <button class="choice">Open the document</button>
     </a>
@@ -152,29 +124,21 @@ img {
   <div class="card">
     <h2>Choose Our Love Adventure 🎭</h2>
 
-    <h3>Create Your Character</h3>
+    <input placeholder="Your name 💕" />
 
-    <input id="playerName" placeholder="Your name 💕" />
-
-    <br>
-
-    <select id="playerClass">
-      <option>Hopeless Romantic</option>
-      <option>Chaotic Softie</option>
-      <option>Quiet Dreamer</option>
-      <option>Main Character Energy</option>
+    <select>
+      <option>Chaotic Romantic</option>
+      <option>Soft Menace</option>
+      <option>Main Character</option>
+      <option>Accidental Heartbreaker</option>
     </select>
 
-    <br>
-
-    <select id="playerAbility">
-      <option>Makes moments unforgettable</option>
-      <option>Laughs in serious situations</option>
-      <option>Turns silence into comfort</option>
-      <option>Accidentally steals hearts</option>
+    <select>
+      <option>Turns moments into memories</option>
+      <option>Makes everything funny</option>
+      <option>Comfort aura</option>
+      <option>Unintentional charm</option>
     </select>
-
-    <br><br>
 
     <button class="choice" onclick="startStory()">Start the story ✨</button>
   </div>
@@ -185,7 +149,6 @@ img {
 <section id="art">
   <div class="card">
     <h2>Art / Drawing 🎨</h2>
-    <p>This reminded me of us.</p>
     <img src="PASTE_IMAGE_URL_HERE">
   </div>
 </section>
@@ -204,134 +167,60 @@ function startStory() {
 }
 
 const scenes = [
-  {
-    text: "You wake up and realize today is special. You feel calm. Happy. Loved.",
-    choices: [
-      ["Text me immediately", 1],
-      ["Stay in bed a little longer", 2]
-    ]
-  },
-  {
-    text: "I reply instantly. Of course I do.",
-    choices: [
-      ["Plan something cute", 3],
-      ["Send something unhinged", 4]
-    ]
-  },
-  {
-    text: "You enjoy the quiet moment. It feels safe.",
-    choices: [
-      ["Think about us", 3],
-      ["Go get coffee", 5]
-    ]
-  },
-  {
-    text: "We decide to meet. No plan. Just vibes.",
-    choices: [
-      ["Walk around aimlessly", 6],
-      ["Get food immediately", 7]
-    ]
-  },
-  {
-    text: "I laugh way too much. You feel proud.",
-    choices: [
-      ["Lean into the chaos", 6],
-      ["Pretend to be normal", 7]
-    ]
-  },
-  {
-    text: "Coffee turns into talking. Talking turns into time disappearing.",
-    choices: [
-      ["Take a picture together", 8],
-      ["Live in the moment", 6]
-    ]
-  },
-  {
-    text: "You realize it doesn’t matter what we do. It’s just good.",
-    choices: [
-      ["Hold my hand", 9],
-      ["Say something dumb", 10]
-    ]
-  },
-  {
-    text: "Food is great. Everything is great.",
-    choices: [
-      ["Share bites", 9],
-      ["Steal my fries", 10]
-    ]
-  },
-  {
-    text: "The picture is blurry. Perfect.",
-    choices: [
-      ["Save it forever", 11],
-      ["Laugh and move on", 6]
-    ]
-  },
-  {
-    text: "The world feels quieter.",
-    choices: [
-      ["Stay like this", 12],
-      ["Make future plans", 13]
-    ]
-  },
-  {
-    text: "I look at you like that.",
-    choices: [
-      ["Smile back", 12],
-      ["Get embarrassed", 11]
-    ]
-  },
-  {
-    text: "You know this day will stay with you.",
-    choices: [
-      ["End the day slowly", 14],
-      ["Wish it lasted forever", 14]
-    ]
-  },
-  {
-    text: "Nothing dramatic happens. Just love.",
-    choices: [
-      ["The perfect ending 🤍", -1]
-    ]
-  },
-  {
-    text: "We talk about trips, ideas, dreams.",
-    choices: [
-      ["Promise nothing, mean everything", 14]
-    ]
-  },
-  {
-    text: "You fall asleep knowing you’re loved.",
-    choices: [
-      ["Restart the story 🔁", 0]
-    ]
-  }
+  { text:"You wake up feeling oddly happy.", choices:[[ "Check your phone",1],[ "Stay in bed",2 ]]},
+  { text:"There’s a message from me.", choices:[[ "Smile immediately",3],[ "Reply dramatically",4 ]]},
+  { text:"The quiet feels safe.", choices:[[ "Think about us",3],[ "Get coffee",5 ]]},
+  { text:"We decide to spend the day together.", choices:[[ "No plan",6],[ "Overplan everything",7 ]]},
+  { text:"I laugh at your reply.", choices:[[ "Be proud",6],[ "Double down",8 ]]},
+  { text:"Coffee becomes talking.", choices:[[ "Deep talk",9],[ "Jokes only",10 ]]},
+  { text:"We wander without direction.", choices:[[ "Hold hands",11],[ "Race each other",12 ]]},
+  { text:"The plan collapses instantly.", choices:[[ "Embrace chaos",12],[ "Fix it",13 ]]},
+  { text:"I send something unhinged.", choices:[[ "Match energy",12],[ "Fake shock",10 ]]},
+  { text:"Conversation gets soft.", choices:[[ "Share a fear",14],[ "Change topic",10 ]]},
+  { text:"We laugh too much.", choices:[[ "Laugh harder",12],[ "Catch breath",15 ]]},
+  { text:"Hands touch accidentally.", choices:[[ "Don’t move away",16],[ "Get shy",17 ]]},
+  { text:"Chaos wins.", choices:[[ "Create a memory",18],[ "Pretend normal",13 ]]},
+  { text:"The plan works… somehow.", choices:[[ "Celebrate",18],[ "Question reality",15 ]]},
+  { text:"It feels real.", choices:[[ "Let it",16],[ "Overthink",17 ]]},
+  { text:"Time disappears.", choices:[[ "Ignore it",18],[ "Check clock",19 ]]},
+  { text:"Everything feels warm.", choices:[[ "Stay here",20],[ "Say something sweet",21 ]]},
+  { text:"Your heart races.", choices:[[ "Admit it",21],[ "Hide it",19 ]]},
+  { text:"This moment matters.", choices:[[ "Save it",22],[ "Live it",20 ]]},
+  { text:"Reality knocks.", choices:[[ "Ignore it",20],[ "Answer it",23 ]]},
+  { text:"You feel calm.", choices:[[ "Breathe",24],[ "Smile quietly",22 ]]},
+  { text:"Words come easily.", choices:[[ "Say them",25],[ "Write later",24 ]]},
+  { text:"You wish time stopped.", choices:[[ "Tell me",25],[ "Keep it inside",26 ]]},
+  { text:"The world resumes.", choices:[[ "Stay close",27],[ "Walk home",26 ]]},
+  { text:"The day softens.", choices:[[ "Thank me",28],[ "Say nothing",27 ]]},
+  { text:"You say it.", choices:[[ "Mean it",28],[ "Laugh after",27 ]]},
+  { text:"Silence feels safe.", choices:[[ "Let it be",29],[ "Break it",28 ]]},
+  { text:"We don’t rush the end.", choices:[[ "Slow goodbye",29],[ "Promise more",29 ]]},
+  { text:"You know you’re loved.", choices:[[ "Restart story 🔁",0 ]]},
+  { text:"The day ends perfectly.", choices:[[ "Restart story 🔁",0 ]]}
 ];
 
-function nextScene(i) {
-  const scene = scenes[i];
-  storyEl.innerHTML = `<p>${scene.text}</p>`;
-  scene.choices.forEach(c => {
-    if (c[1] === -1) return;
-    const btn = document.createElement("button");
-    btn.className = "choice";
-    btn.textContent = c[0];
-    btn.onclick = () => nextScene(c[1]);
-    storyEl.appendChild(btn);
+function nextScene(i){
+  const s = scenes[i];
+  storyEl.innerHTML = `<p>${s.text}</p>`;
+  s.choices.forEach(c=>{
+    const b=document.createElement("button");
+    b.className="choice";
+    b.textContent=c[0];
+    b.onclick=()=>nextScene(c[1]);
+    storyEl.appendChild(b);
   });
 }
 </script>
 
-<!-- floating hearts -->
 <script>
-setInterval(() => {
-  const h = document.createElement("div");
-  h.className = "heart";
-  h.textContent = "🤍";
-  h.style.left = Math.random() * 100 + "vw";
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.textContent=Math.random()>0.5?"🤍":"💗";
+  h.style.left=Math.random()*100+"vw";
   document.body.appendChild(h);
-  setTimeout(() => h.remove(), 8000);
-}, 600);
+  setTimeout(()=>h.remove(),9000);
+},500);
 </script>
 
 </body>
