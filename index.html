@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Valentine 💘</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f0f14;
+      color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      padding: 30px;
+      background: linear-gradient(135deg, #ff5f8f, #c77dff);
+    }
+    button {
+      margin: 10px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 20px;
+      background: #ff5f8f;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #ff3f7f;
+    }
+    section {
+      display: none;
+      padding: 30px;
+      max-width: 800px;
+      margin: auto;
+    }
+    section.active {
+      display: block;
+    }
+    input {
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      margin: 5px;
+    }
+    img {
+      max-width: 90%;
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Happy Valentine 💘</h1>
+  <p>This is our little world</p>
+  <button onclick="showSection('home')">Home</button>
+  <button onclick="showSection('love')">Things I Love About You</button>
+  <button onclick="showSection('adventure')">Our Adventure</button>
+  <button onclick="showSection('art')">Art</button>
+</header>
+
+<section id="home" class="active">
+  <h2>Welcome 💕</h2>
+  <p>
+    I wanted one place where everything about us could live.<br>
+    Take your time. This is for you.
+  </p>
+</section>
+
+<section id="love">
+  <h2>Things I Love About You</h2>
+  <p>Click below when you’re ready 💘</p>
+  <a href="PASTE_GOOGLE_DOC_LINK_HERE" target="_blank">
+    <button>Open the document</button>
+  </a>
+</section>
+
+<section id="adventure">
+  <h2>Choose Our Love Adventure 🎭</h2>
+
+  <h3>Create Your Character</h3>
+  <p>Name:</p>
+  <input placeholder="Your name 💕" />
+
+  <p>Class:</p>
+  <input value="Chaotic Romantic" disabled />
+
+  <p>Special Ability:</p>
+  <input value="Turns ordinary moments into memories" disabled />
+
+  <hr style="margin: 30px 0;">
+
+  <h3>The Story Begins…</h3>
+  <p>
+    You wake up and realize you have one perfect day with me.<br>
+    What do you choose?
+  </p>
+
+  <button onclick="alert('You chose to get lost together 💘')">
+    Get lost in a city
+  </button>
+
+  <button onclick="alert('You chose chaos and comfort 🫶')">
+    Stay inside and be chaotic
+  </button>
+
+  <button onclick="alert('You chose something stupid and unforgettable 😈')">
+    Do something stupid together
+  </button>
+
+  <p style="margin-top: 20px;">
+    (Tell me your choice 💬)
+  </p>
+</section>
+
+<section id="art">
+  <h2>Art / Drawing 🎨</h2>
+  <p>This reminded me of us.</p>
+  <img src="PASTE_IMAGE_URL_HERE" alt="Art of us">
+</section>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll("section").forEach(sec => {
+      sec.classList.remove("active");
+    });
+    document.getElementById(id).classList.add("active");
+  }
+</script>
+
+</body>
+</html>
