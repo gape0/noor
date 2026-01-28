@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Happy Valentine 💘</title>
+<title>Happy Valentine Noor 🤍</title>
 
 <style>
 * { box-sizing: border-box; }
@@ -94,7 +94,7 @@ img {
 <body>
 
 <header>
-  <h1>Happy Valentine 💘</h1>
+  <h1>Happy Valentine 🤍</h1>
   <p>This is our little world</p>
   <nav>
     <button onclick="showSection('home')">Home</button>
@@ -167,36 +167,124 @@ function startStory() {
 }
 
 const scenes = [
-  { text:"You wake up feeling oddly happy.", choices:[[ "Check your phone",1],[ "Stay in bed",2 ]]},
-  { text:"There’s a message from me.", choices:[[ "Smile immediately",3],[ "Reply dramatically",4 ]]},
-  { text:"The quiet feels safe.", choices:[[ "Think about us",3],[ "Get coffee",5 ]]},
-  { text:"We decide to spend the day together.", choices:[[ "No plan",6],[ "Overplan everything",7 ]]},
-  { text:"I laugh at your reply.", choices:[[ "Be proud",6],[ "Double down",8 ]]},
-  { text:"Coffee becomes talking.", choices:[[ "Deep talk",9],[ "Jokes only",10 ]]},
-  { text:"We wander without direction.", choices:[[ "Hold hands",11],[ "Race each other",12 ]]},
-  { text:"The plan collapses instantly.", choices:[[ "Embrace chaos",12],[ "Fix it",13 ]]},
-  { text:"I send something unhinged.", choices:[[ "Match energy",12],[ "Fake shock",10 ]]},
-  { text:"Conversation gets soft.", choices:[[ "Share a fear",14],[ "Change topic",10 ]]},
-  { text:"We laugh too much.", choices:[[ "Laugh harder",12],[ "Catch breath",15 ]]},
-  { text:"Hands touch accidentally.", choices:[[ "Don’t move away",16],[ "Get shy",17 ]]},
-  { text:"Chaos wins.", choices:[[ "Create a memory",18],[ "Pretend normal",13 ]]},
-  { text:"The plan works… somehow.", choices:[[ "Celebrate",18],[ "Question reality",15 ]]},
-  { text:"It feels real.", choices:[[ "Let it",16],[ "Overthink",17 ]]},
-  { text:"Time disappears.", choices:[[ "Ignore it",18],[ "Check clock",19 ]]},
-  { text:"Everything feels warm.", choices:[[ "Stay here",20],[ "Say something sweet",21 ]]},
-  { text:"Your heart races.", choices:[[ "Admit it",21],[ "Hide it",19 ]]},
-  { text:"This moment matters.", choices:[[ "Save it",22],[ "Live it",20 ]]},
-  { text:"Reality knocks.", choices:[[ "Ignore it",20],[ "Answer it",23 ]]},
-  { text:"You feel calm.", choices:[[ "Breathe",24],[ "Smile quietly",22 ]]},
-  { text:"Words come easily.", choices:[[ "Say them",25],[ "Write later",24 ]]},
-  { text:"You wish time stopped.", choices:[[ "Tell me",25],[ "Keep it inside",26 ]]},
-  { text:"The world resumes.", choices:[[ "Stay close",27],[ "Walk home",26 ]]},
-  { text:"The day softens.", choices:[[ "Thank me",28],[ "Say nothing",27 ]]},
-  { text:"You say it.", choices:[[ "Mean it",28],[ "Laugh after",27 ]]},
-  { text:"Silence feels safe.", choices:[[ "Let it be",29],[ "Break it",28 ]]},
-  { text:"We don’t rush the end.", choices:[[ "Slow goodbye",29],[ "Promise more",29 ]]},
-  { text:"You know you’re loved.", choices:[[ "Restart story 🔁",0 ]]},
-  { text:"The day ends perfectly.", choices:[[ "Restart story 🔁",0 ]]}
+  { text:"You wake up feeling oddly happy.", choices:[
+      ["Check your phone to see if I messaged you already, can’t wait",1],
+      ["Stay in bed for a few more minutes, savoring the quiet calm",2]
+  ]},
+  { text:"There’s a message from me.", choices:[
+      ["Smile immediately and reply with all your heart",3],
+      ["Reply dramatically with something silly and chaotic",4]
+  ]},
+  { text:"The quiet feels safe.", choices:[
+      ["Think about all the small moments we shared together",3],
+      ["Get up and go grab a coffee, day is waiting for us",5]
+  ]},
+  { text:"We decide to spend the day together.", choices:[
+      ["No plan, just wander and see where life takes us",6],
+      ["Overplan everything to make it perfectly chaotic fun",7]
+  ]},
+  { text:"I laugh at your reply.", choices:[
+      ["Be proud of making me laugh uncontrollably",6],
+      ["Double down with even more silly messages",8]
+  ]},
+  { text:"Coffee becomes talking.", choices:[
+      ["Deep talk about dreams, fears, and little secrets",9],
+      ["Only jokes and laughter, keep it light and chaotic",10]
+  ]},
+  { text:"We wander without direction.", choices:[
+      ["Hold my hand tightly, feel the warmth of the moment",11],
+      ["Race each other playfully across the streets",12]
+  ]},
+  { text:"The plan collapses instantly.", choices:[
+      ["Embrace the chaos, laughing at how messy it is",12],
+      ["Try to fix it, turning mistakes into memories",13]
+  ]},
+  { text:"I send something unhinged.", choices:[
+      ["Match my energy, go equally chaotic and silly",12],
+      ["Fake shock and pretend to scold me playfully",10]
+  ]},
+  { text:"Conversation gets soft.", choices:[
+      ["Share a small fear, feel closer and vulnerable",14],
+      ["Change the topic to something fun, lighten the mood",10]
+  ]},
+  { text:"We laugh too much.", choices:[
+      ["Laugh even harder until our stomachs hurt",12],
+      ["Catch our breath and smile at each other warmly",15]
+  ]},
+  { text:"Hands touch accidentally.", choices:[
+      ["Don’t move away, just hold it a little longer",16],
+      ["Get shy and glance at me nervously",17]
+  ]},
+  { text:"Chaos wins.", choices:[
+      ["Create a memory out of this mess that we’ll tell forever",18],
+      ["Pretend everything is normal while laughing inside",13]
+  ]},
+  { text:"The plan works… somehow.", choices:[
+      ["Celebrate with a playful hug or high five",18],
+      ["Question reality for how perfect this feels",15]
+  ]},
+  { text:"It feels real.", choices:[
+      ["Let it feel completely, no overthinking needed",16],
+      ["Overthink and smile at how cute it is anyway",17]
+  ]},
+  { text:"Time disappears.", choices:[
+      ["Ignore the clock, just enjoy every second together",18],
+      ["Check the time, realizing how fast it goes",19]
+  ]},
+  { text:"Everything feels warm.", choices:[
+      ["Stay here, let this warmth linger and soak in",20],
+      ["Say something sweet, nothing too dramatic",21]
+  ]},
+  { text:"Your heart races.", choices:[
+      ["Admit how much you like this feeling with me",21],
+      ["Hide it, but smile secretly knowing it’s true",19]
+  ]},
+  { text:"This moment matters.", choices:[
+      ["Save it in your memory forever, never forget",22],
+      ["Live it fully, no regrets just now",20]
+  ]},
+  { text:"Reality knocks.", choices:[
+      ["Ignore it, keep the dream alive a little longer",20],
+      ["Answer it, but make it playful and soft",23]
+  ]},
+  { text:"You feel calm.", choices:[
+      ["Breathe deeply, feel safe and happy with me",24],
+      ["Smile quietly, content and peaceful",22]
+  ]},
+  { text:"Words come easily.", choices:[
+      ["Say the things you feel, no holding back",25],
+      ["Write them later, save it for a perfect moment",24]
+  ]},
+  { text:"You wish time stopped.", choices:[
+      ["Tell me exactly how much this means to you",25],
+      ["Keep it inside for now, a secret just for you",26]
+  ]},
+  { text:"The world resumes.", choices:[
+      ["Stay close, never want to let go",27],
+      ["Walk home slowly, savoring the feeling",26]
+  ]},
+  { text:"The day softens.", choices:[
+      ["Thank me sincerely for being with you today",28],
+      ["Say nothing, but smile warmly inside",27]
+  ]},
+  { text:"You say it.", choices:[
+      ["Mean it with every part of your heart",28],
+      ["Laugh after, because it’s perfectly chaotic cute",27]
+  ]},
+  { text:"Silence feels safe.", choices:[
+      ["Let it be, enjoying the calm together",29],
+      ["Break it gently with a soft joke or whisper",28]
+  ]},
+  { text:"We don’t rush the end.", choices:[
+      ["Slow goodbye, savor every last second",29],
+      ["Promise more adventures, never fully leave",29]
+  ]},
+  { text:"You know you’re loved.", choices:[
+      ["Restart story 🔁 and relive it all again",0]
+  ]},
+  { text:"The day ends perfectly.", choices:[
+      ["Restart story 🔁 to make new memories together",0]
+  ]}
 ];
 
 function nextScene(i){
