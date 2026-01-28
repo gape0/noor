@@ -121,85 +121,30 @@ img {
 </section>
 
 <section id="adventure">
-<h2>Choose Our Love Adventure 🎭</h2>
+  <div class="card">
+    <h2>Choose Our Love Adventure 🎭</h2>
 
+    <input placeholder="Your name 💕" />
 
-<h3>Create Your Character</h3>
-<label for="playerName">Name:</label><br>
-<input id="playerName" placeholder="Your name 💕" /><br>
+    <select>
+      <option>Chaotic Romantic</option>
+      <option>Soft Menace</option>
+      <option>Main Character</option>
+      <option>Accidental Heartbreaker</option>
+    </select>
 
+    <select>
+      <option>Turns moments into memories</option>
+      <option>Makes everything funny</option>
+      <option>Comfort aura</option>
+      <option>Unintentional charm</option>
+    </select>
 
-<label for="playerClass">Class:</label><br>
-<select id="playerClass">
-<option>Chaotic Romantic</option>
-<option>Soft Menace</option>
-<option>Main Character</option>
-<option>Accidental Heartbreaker</option>
-</select><br>
+    <button class="choice" onclick="startStory()">Start the story ✨</button>
+  </div>
 
-
-<label for="playerAbility">Special Ability:</label><br>
-<select id="playerAbility">
-<option>Turns ordinary moments into memories</option>
-<option>Makes everything funny</option>
-<option>Comfort aura</option>
-<option>Unintentional charm</option>
-</select><br><br>
-
-
-<button class="choice" onclick="startStory()">Start the story ✨</button>
-
-
-<div id="story" class="card" style="display:none;"></div>
+  <div id="story" class="card" style="display:none;"></div>
 </section>
-
-
-<script>
-const storyEl = document.getElementById("story");
-
-
-const scenes = [
-["You wake up and realize you have one perfect day with me.", "Get lost in a city 💘", "Stay inside and be chaotic 🫶", "Do something stupid together 😈"],
-["You wander into a small cafe.", "Order a random pastry 🥐", "Play a game of cards ♠️", "Talk to a stranger ☕"],
-["You decide to walk in the park.", "Feed the ducks 🦆", "Sit under a tree 🌳", "Take silly photos 📸"],
-["A street musician catches your attention.", "Dance together 💃", "Give them a tip 💰", "Join the crowd 👀"],
-["You find a hidden alley.", "Draw graffiti 🎨", "Take a selfie 🤳", "Explore quietly 🕵️‍♂️"],
-["A spontaneous rain starts.", "Jump in puddles 🌧️", "Run for shelter ⛱️", "Laugh and get wet 😄"],
-["You discover a little bookstore.", "Read poetry 📖", "Buy a quirky book 📚", "Talk to the owner 🗣️"],
-["You find a street food stall.", "Try something new 🌮", "Share a snack 🍡", "Watch the chef 👨‍🍳"],
-["Sunset approaches.", "Chase the sun 🌅", "Take photos 📷", "Sit quietly together 🌙"],
-["Night falls.", "Catch fireflies 🪄", "Look at the stars ✨", "Walk home holding hands ❤️"]
-];
-
-
-let step = 0;
-
-
-function startStory() {
-storyEl.style.display = "block";
-step = 0;
-nextScene(step);
-}
-
-
-function nextScene(i) {
-storyEl.innerHTML = `<p>${scenes[i][0]}</p>`;
-for (let j = 1; j <= 3; j++) {
-const b = document.createElement("button");
-b.className = "choice";
-b.textContent = scenes[i][j];
-b.onclick = () => {
-step++;
-if (step < scenes.length) {
-nextScene(step);
-} else {
-storyEl.innerHTML = "<p>The day ends perfectly. Our hearts are full 💖</p>";
-}
-};
-storyEl.appendChild(b);
-}
-}
-</script>
 
 <section id="art">
   <div class="card">
