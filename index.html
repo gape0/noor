@@ -1,134 +1,337 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Happy Valentine Noor 🤍</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f0f14;
-      color: #f2f2f2;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-    header {
-      padding: 30px;
-      background: linear-gradient(135deg, #ff5f8f, #c77dff);
-    }
-    button {
-      margin: 10px;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 20px;
-      background: #ff5f8f;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #ff3f7f;
-    }
-    section {
-      display: none;
-      padding: 30px;
-      max-width: 800px;
-      margin: auto;
-    }
-    section.active {
-      display: block;
-    }
-    input {
-      padding: 10px;
-      border-radius: 10px;
-      border: none;
-      margin: 5px;
-    }
-    img {
-      max-width: 90%;
-      border-radius: 20px;
-      margin-top: 20px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>Happy Valentine Noor 🤍</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #1b1b2f, #0f0f14);
+  color: #f5f5f7;
+  margin: 0;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+header {
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #ff5f8f, #c77dff);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+header p {
+  opacity: 0.9;
+}
+
+nav button {
+  margin: 8px;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+}
+
+nav button:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+section {
+  display: none;
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+section.active { display: block; }
+
+.card {
+  background: rgba(255,255,255,0.06);
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  margin-bottom: 30px;
+}
+
+h2 { margin-top: 0; }
+
+input, select {
+  padding: 12px;
+  border-radius: 14px;
+  border: none;
+  width: 80%;
+  max-width: 300px;
+  margin: 8px;
+}
+
+button.choice {
+  display: block;
+  margin: 12px auto;
+  padding: 14px 24px;
+  border-radius: 20px;
+  border: none;
+  background: linear-gradient(135deg, #ff5f8f, #ff88b3);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  max-width: 420px;
+  width: 90%;
+}
+
+button.choice:hover {
+  filter: brightness(1.1);
+}
+
+img {
+  max-width: 90%;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+/* Floating hearts */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: floatUp 8s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 0.6; }
+  to { transform: translateY(-110vh); opacity: 0; }
+}
+</style>
 </head>
+
 <body>
 
 <header>
   <h1>Happy Valentine Noor 🤍</h1>
   <p>This is a little thing I made for you</p>
-  <button onclick="showSection('home')">Home</button>
-  <button onclick="showSection('love')">Things I Love About You</button>
-  <button onclick="showSection('adventure')">Our Adventure</button>
-  <button onclick="showSection('art')">Art</button>
+  <nav>
+    <button onclick="showSection('home')">Home</button>
+    <button onclick="showSection('love')">Things I Love</button>
+    <button onclick="showSection('adventure')">Adventure</button>
+    <button onclick="showSection('art')">Art</button>
+  </nav>
 </header>
 
 <section id="home" class="active">
-  <h2>Welcome 💕</h2>
-  <p>
-    I wanted one place where everything about us could live.<br>
-    Take your time. This is for you.
-  </p>
+  <div class="card">
+    <h2>Welcome 💕</h2>
+    <p>
+      I wanted one place where everything about us could live.<br>
+      No rush. No rules. Just you.
+    </p>
+  </div>
 </section>
 
 <section id="love">
-  <h2>Things I Love About You</h2>
-  <p>Click below when you’re ready 🤍</p>
-  <a href="PASTE_GOOGLE_DOC_LINK_HERE" target="_blank">
-    <button>Open the document</button>
-  </a>
+  <div class="card">
+    <h2>Things I Love About You 🤍</h2>
+    <p>Open it whenever you feel like it.</p>
+    <a href="PASTE_GOOGLE_DOC_LINK_HERE" target="_blank">
+      <button class="choice">Open the document</button>
+    </a>
+  </div>
 </section>
 
 <section id="adventure">
-  <h2>Choose Our Love Adventure 🎭 <- Minigame </h2>
+  <div class="card">
+    <h2>Choose Our Love Adventure 🎭</h2>
 
-  <h3>Create Your Character</h3>
-  <p>Name:</p>
-  <input placeholder="Your name 💕" />
+    <h3>Create Your Character</h3>
 
-  <p>Class:</p>
-  <input value="Chaotic Romantic" disabled />
+    <input id="playerName" placeholder="Your name 💕" />
 
-  <p>Special Ability:</p>
-  <input value="Turns ordinary moments into memories" disabled />
+    <br>
 
-  <hr style="margin: 30px 0;">
+    <select id="playerClass">
+      <option>Hopeless Romantic</option>
+      <option>Chaotic Softie</option>
+      <option>Quiet Dreamer</option>
+      <option>Main Character Energy</option>
+    </select>
 
-  <h3>The Story Begins…</h3>
-  <p>
-    You wake up and realize you have one perfect day with me.<br>
-    What do you choose?
-  </p>
+    <br>
 
-  <button onclick="alert('You chose to get lost together 💘')">
-    Get lost in a city
-  </button>
+    <select id="playerAbility">
+      <option>Makes moments unforgettable</option>
+      <option>Laughs in serious situations</option>
+      <option>Turns silence into comfort</option>
+      <option>Accidentally steals hearts</option>
+    </select>
 
-  <button onclick="alert('You chose chaos and comfort 🫶')">
-    Stay inside and be chaotic
-  </button>
+    <br><br>
 
-  <button onclick="alert('You chose something stupid and unforgettable 😈')">
-    Do something stupid together
-  </button>
+    <button class="choice" onclick="startStory()">Start the story ✨</button>
+  </div>
 
-  <p style="margin-top: 20px;">
-    (Tell me your choice 💬)
-  </p>
+  <div id="story" class="card" style="display:none;"></div>
 </section>
 
 <section id="art">
-  <h2>Art / Drawing 🎨</h2>
-  <p>This reminded me of us.</p>
-  <img src="PASTE_IMAGE_URL_HERE" alt="Art of us">
+  <div class="card">
+    <h2>Art / Drawing 🎨</h2>
+    <p>This reminded me of us.</p>
+    <img src="PASTE_IMAGE_URL_HERE">
+  </div>
 </section>
 
 <script>
-  function showSection(id) {
-    document.querySelectorAll("section").forEach(sec => {
-      sec.classList.remove("active");
-    });
-    document.getElementById(id).classList.add("active");
+function showSection(id) {
+  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+const storyEl = document.getElementById("story");
+
+function startStory() {
+  storyEl.style.display = "block";
+  nextScene(0);
+}
+
+const scenes = [
+  {
+    text: "You wake up and realize today is special. You feel calm. Happy. Loved.",
+    choices: [
+      ["Text me immediately", 1],
+      ["Stay in bed a little longer", 2]
+    ]
+  },
+  {
+    text: "I reply instantly. Of course I do.",
+    choices: [
+      ["Plan something cute", 3],
+      ["Send something unhinged", 4]
+    ]
+  },
+  {
+    text: "You enjoy the quiet moment. It feels safe.",
+    choices: [
+      ["Think about us", 3],
+      ["Go get coffee", 5]
+    ]
+  },
+  {
+    text: "We decide to meet. No plan. Just vibes.",
+    choices: [
+      ["Walk around aimlessly", 6],
+      ["Get food immediately", 7]
+    ]
+  },
+  {
+    text: "I laugh way too much. You feel proud.",
+    choices: [
+      ["Lean into the chaos", 6],
+      ["Pretend to be normal", 7]
+    ]
+  },
+  {
+    text: "Coffee turns into talking. Talking turns into time disappearing.",
+    choices: [
+      ["Take a picture together", 8],
+      ["Live in the moment", 6]
+    ]
+  },
+  {
+    text: "You realize it doesn’t matter what we do. It’s just good.",
+    choices: [
+      ["Hold my hand", 9],
+      ["Say something dumb", 10]
+    ]
+  },
+  {
+    text: "Food is great. Everything is great.",
+    choices: [
+      ["Share bites", 9],
+      ["Steal my fries", 10]
+    ]
+  },
+  {
+    text: "The picture is blurry. Perfect.",
+    choices: [
+      ["Save it forever", 11],
+      ["Laugh and move on", 6]
+    ]
+  },
+  {
+    text: "The world feels quieter.",
+    choices: [
+      ["Stay like this", 12],
+      ["Make future plans", 13]
+    ]
+  },
+  {
+    text: "I look at you like that.",
+    choices: [
+      ["Smile back", 12],
+      ["Get embarrassed", 11]
+    ]
+  },
+  {
+    text: "You know this day will stay with you.",
+    choices: [
+      ["End the day slowly", 14],
+      ["Wish it lasted forever", 14]
+    ]
+  },
+  {
+    text: "Nothing dramatic happens. Just love.",
+    choices: [
+      ["The perfect ending 🤍", -1]
+    ]
+  },
+  {
+    text: "We talk about trips, ideas, dreams.",
+    choices: [
+      ["Promise nothing, mean everything", 14]
+    ]
+  },
+  {
+    text: "You fall asleep knowing you’re loved.",
+    choices: [
+      ["Restart the story 🔁", 0]
+    ]
   }
+];
+
+function nextScene(i) {
+  const scene = scenes[i];
+  storyEl.innerHTML = `<p>${scene.text}</p>`;
+  scene.choices.forEach(c => {
+    if (c[1] === -1) return;
+    const btn = document.createElement("button");
+    btn.className = "choice";
+    btn.textContent = c[0];
+    btn.onclick = () => nextScene(c[1]);
+    storyEl.appendChild(btn);
+  });
+}
+</script>
+
+<!-- floating hearts -->
+<script>
+setInterval(() => {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.textContent = "🤍";
+  h.style.left = Math.random() * 100 + "vw";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 8000);
+}, 600);
 </script>
 
 </body>
