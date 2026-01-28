@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Happy Valentine Noor 🤍</title>
+<title>Happy Valentine 💘</title>
 
 <style>
 * { box-sizing: border-box; }
@@ -94,7 +94,7 @@ img {
 <body>
 
 <header>
-  <h1>Happy Valentine 🤍</h1>
+  <h1>Happy Valentine 💘</h1>
   <p>This is our little world</p>
   <nav>
     <button onclick="showSection('home')">Home</button>
@@ -121,85 +121,162 @@ img {
 </section>
 
 <section id="adventure">
-  <h2>Choose Our Love Adventure 🎭</h2>
+<h2>Choose Our Love Adventure 🎭</h2>
 
-  <h3>Create Your Character</h3>
-  <p>Name:</p>
-  <input id="charName" placeholder="Your name 💕" />
 
-  <p>Class:</p>
-  <input value="Chaotic Romantic" disabled />
+<h3>Create Your Character</h3>
+<label for="playerName">Name:</label><br>
+<input id="playerName" placeholder="Your name 💕" /><br>
 
-  <p>Special Ability:</p>
-  <input value="Turns ordinary moments into memories" disabled />
 
-  <hr style="margin: 30px 0;">
+<label for="playerClass">Class:</label><br>
+<select id="playerClass">
+<option>Chaotic Romantic</option>
+<option>Soft Menace</option>
+<option>Main Character</option>
+<option>Accidental Heartbreaker</option>
+</select><br>
 
-  <h3>The Story Begins…</h3>
-  <p id="storyText">
-    You wake up and realize you have one perfect day with me.<br>
-    What do you choose?
-  </p>
 
-  <div id="choices">
-    <button id="choice1"></button>
-    <button id="choice2"></button>
-    <button id="choice3"></button>
+<label for="playerAbility">Special Ability:</label><br>
+<select id="playerAbility">
+<option>Turns ordinary moments into memories</option>
+<option>Makes everything funny</option>
+<option>Comfort aura</option>
+<option>Unintentional charm</option>
+</select><br><br>
+
+
+<button class="choice" onclick="startStory()">Start the story ✨</button>
+
+
+<div id="story" class="card" style="display:none;"></div>
+</section>
+
+
+<script>
+const storyEl = document.getElementById("story");
+
+
+const scenes = [
+["You wake up and realize you have one perfect day with me.", "Get lost in a city 💘", "Stay inside and be chaotic 🫶", "Do something stupid together 😈"],
+["You wander into a small cafe.", "Order a random pastry 🥐", "Play a game of cards ♠️", "Talk to a stranger ☕"],
+["You decide to walk in the park.", "Feed the ducks 🦆", "Sit under a tree 🌳", "Take silly photos 📸"],
+["A street musician catches your attention.", "Dance together 💃", "Give them a tip 💰", "Join the crowd 👀"],
+["You find a hidden alley.", "Draw graffiti 🎨", "Take a selfie 🤳", "Explore quietly 🕵️‍♂️"],
+["A spontaneous rain starts.", "Jump in puddles 🌧️", "Run for shelter ⛱️", "Laugh and get wet 😄"],
+["You discover a little bookstore.", "Read poetry 📖", "Buy a quirky book 📚", "Talk to the owner 🗣️"],
+["You find a street food stall.", "Try something new 🌮", "Share a snack 🍡", "Watch the chef 👨‍🍳"],
+["Sunset approaches.", "Chase the sun 🌅", "Take photos 📷", "Sit quietly together 🌙"],
+["Night falls.", "Catch fireflies 🪄", "Look at the stars ✨", "Walk home holding hands ❤️"]
+];
+
+
+let step = 0;
+
+
+function startStory() {
+storyEl.style.display = "block";
+step = 0;
+nextScene(step);
+}
+
+
+function nextScene(i) {
+storyEl.innerHTML = `<p>${scenes[i][0]}</p>`;
+for (let j = 1; j <= 3; j++) {
+const b = document.createElement("button");
+b.className = "choice";
+b.textContent = scenes[i][j];
+b.onclick = () => {
+step++;
+if (step < scenes.length) {
+nextScene(step);
+} else {
+storyEl.innerHTML = "<p>The day ends perfectly. Our hearts are full 💖</p>";
+}
+};
+storyEl.appendChild(b);
+}
+}
+</script>
+
+<section id="art">
+  <div class="card">
+    <h2>Art / Drawing 🎨</h2>
+    <img src="PASTE_IMAGE_URL_HERE">
   </div>
 </section>
 
 <script>
-  const adventure = [
-    ["Go for a coffee 💖","Walk in the park 🌳","Get lost in the city 🏙️"],
-    ["Buy a cute dessert 🍰","Sit by the fountain 💦","Take a random bus 🚌"],
-    ["Picnic on the grass 🧺","Visit an art gallery 🎨","Chase street performers 🎭"],
-    ["Climb a small hill ⛰️","Draw each other ✏️","Try a new hobby together 🎯"],
-    ["Share secret stories 🤫","Dance in the square 💃","Sneak into a photo booth 📸"],
-    ["Ice cream challenge 🍦","Bake something chaotic 🍪","Taste random street food 🌮"],
-    ["Ride a carousel 🎠","Jump in puddles 🌧️","Sing to strangers 🎤"],
-    ["Read together under a tree 📚","Watch clouds ☁️","Share music with headphones 🎧"],
-    ["Chase sunset photos 🌅","Write a tiny poem 📝","Draw hearts on foggy windows ❤️"],
-    ["Firefly jar magic 🪄","Tiny stargazing picnic ✨","Hold hands on a rooftop 🏙️"]
-  ];
+function showSection(id) {
+  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
 
-  const alerts = [
-    ["Coffee date chosen ☕","Park stroll chosen 🌳","City adventure chosen 🏙️"],
-    ["Dessert time 🍰","Fountain pause 💦","Bus adventure 🚌"],
-    ["Picnic bliss 🧺","Art admiration 🎨","Street chaos 🎭"],
-    ["Hill conquered ⛰️","Portraits made ✏️","New hobby trial 🎯"],
-    ["Secrets shared 🤫","Square dance 💃","Photo booth fun 📸"],
-    ["Ice cream frenzy 🍦","Baking chaos 🍪","Street taste 🌮"],
-    ["Carousel spin 🎠","Puddle jump 🌧️","Street serenade 🎤"],
-    ["Quiet reading 📚","Cloud watching ☁️","Music sharing 🎧"],
-    ["Sunset chase 🌅","Poem written 📝","Hearts drawn ❤️"],
-    ["Firefly magic 🪄","Star picnic ✨","Rooftop hands 🏙️"]
-  ];
+const storyEl = document.getElementById("story");
 
-  let step = 0;
+function startStory() {
+  storyEl.style.display = "block";
+  nextScene(0);
+}
 
-  function setChoices() {
-    document.getElementById("choice1").innerText = adventure[step][0];
-    document.getElementById("choice2").innerText = adventure[step][1];
-    document.getElementById("choice3").innerText = adventure[step][2];
+const scenes = [
+  { text:"You wake up feeling oddly happy.", choices:[[ "Check your phone",1],[ "Stay in bed",2 ]]},
+  { text:"There’s a message from me.", choices:[[ "Smile immediately",3],[ "Reply dramatically",4 ]]},
+  { text:"The quiet feels safe.", choices:[[ "Think about us",3],[ "Get coffee",5 ]]},
+  { text:"We decide to spend the day together.", choices:[[ "No plan",6],[ "Overplan everything",7 ]]},
+  { text:"I laugh at your reply.", choices:[[ "Be proud",6],[ "Double down",8 ]]},
+  { text:"Coffee becomes talking.", choices:[[ "Deep talk",9],[ "Jokes only",10 ]]},
+  { text:"We wander without direction.", choices:[[ "Hold hands",11],[ "Race each other",12 ]]},
+  { text:"The plan collapses instantly.", choices:[[ "Embrace chaos",12],[ "Fix it",13 ]]},
+  { text:"I send something unhinged.", choices:[[ "Match energy",12],[ "Fake shock",10 ]]},
+  { text:"Conversation gets soft.", choices:[[ "Share a fear",14],[ "Change topic",10 ]]},
+  { text:"We laugh too much.", choices:[[ "Laugh harder",12],[ "Catch breath",15 ]]},
+  { text:"Hands touch accidentally.", choices:[[ "Don’t move away",16],[ "Get shy",17 ]]},
+  { text:"Chaos wins.", choices:[[ "Create a memory",18],[ "Pretend normal",13 ]]},
+  { text:"The plan works… somehow.", choices:[[ "Celebrate",18],[ "Question reality",15 ]]},
+  { text:"It feels real.", choices:[[ "Let it",16],[ "Overthink",17 ]]},
+  { text:"Time disappears.", choices:[[ "Ignore it",18],[ "Check clock",19 ]]},
+  { text:"Everything feels warm.", choices:[[ "Stay here",20],[ "Say something sweet",21 ]]},
+  { text:"Your heart races.", choices:[[ "Admit it",21],[ "Hide it",19 ]]},
+  { text:"This moment matters.", choices:[[ "Save it",22],[ "Live it",20 ]]},
+  { text:"Reality knocks.", choices:[[ "Ignore it",20],[ "Answer it",23 ]]},
+  { text:"You feel calm.", choices:[[ "Breathe",24],[ "Smile quietly",22 ]]},
+  { text:"Words come easily.", choices:[[ "Say them",25],[ "Write later",24 ]]},
+  { text:"You wish time stopped.", choices:[[ "Tell me",25],[ "Keep it inside",26 ]]},
+  { text:"The world resumes.", choices:[[ "Stay close",27],[ "Walk home",26 ]]},
+  { text:"The day softens.", choices:[[ "Thank me",28],[ "Say nothing",27 ]]},
+  { text:"You say it.", choices:[[ "Mean it",28],[ "Laugh after",27 ]]},
+  { text:"Silence feels safe.", choices:[[ "Let it be",29],[ "Break it",28 ]]},
+  { text:"We don’t rush the end.", choices:[[ "Slow goodbye",29],[ "Promise more",29 ]]},
+  { text:"You know you’re loved.", choices:[[ "Restart story 🔁",0 ]]},
+  { text:"The day ends perfectly.", choices:[[ "Restart story 🔁",0 ]]}
+];
 
-    document.getElementById("choice1").onclick = () => nextStep(0);
-    document.getElementById("choice2").onclick = () => nextStep(1);
-    document.getElementById("choice3").onclick = () => nextStep(2);
-  }
-
-  function nextStep(choiceIndex) {
-    alert(alerts[step][choiceIndex]);
-    step++;
-    if (step < adventure.length) {
-      document.getElementById("storyText").innerHTML = `Step ${step+1}: What do you choose?`;
-      setChoices();
-    } else {
-      document.getElementById("storyText").innerHTML = "The day ends perfectly. Our hearts are full 💖";
-      document.getElementById("choices").style.display = "none";
-    }
-  }
-
-  setChoices();
+function nextScene(i){
+  const s = scenes[i];
+  storyEl.innerHTML = `<p>${s.text}</p>`;
+  s.choices.forEach(c=>{
+    const b=document.createElement("button");
+    b.className="choice";
+    b.textContent=c[0];
+    b.onclick=()=>nextScene(c[1]);
+    storyEl.appendChild(b);
+  });
+}
 </script>
+
+<script>
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.textContent=Math.random()>0.5?"🤍":"💗";
+  h.style.left=Math.random()*100+"vw";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),9000);
+},500);
+</script>
+
 </body>
 </html>
