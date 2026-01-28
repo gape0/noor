@@ -124,132 +124,94 @@ img {
   <h2>Choose Our Love Adventure 🎭</h2>
 
   <h3>Create Your Character</h3>
-  <label for="playerName">Name:</label><br>
-  <input id="playerName" placeholder="Your name 💕" /><br>
+  <p>Name:</p>
+  <input id="charName" placeholder="Your name 💕" />
 
-  <label for="playerClass">Class:</label><br>
-  <select id="playerClass">
-    <option>Chaotic Romantic</option>
-    <option>Soft Menace</option>
-    <option>Main Character</option>
-    <option>Accidental Heartbreaker</option>
-  </select><br>
+  <p>Class:</p>
+  <input value="Chaotic Romantic" disabled />
 
-  <label for="playerAbility">Special Ability:</label><br>
-  <select id="playerAbility">
-    <option>Turns ordinary moments into memories</option>
-    <option>Makes everything funny</option>
-    <option>Comfort aura</option>
-    <option>Unintentional charm</option>
-  </select><br><br>
+  <p>Special Ability:</p>
+  <input value="Turns ordinary moments into memories" disabled />
 
-  <button class="choice" onclick="startStory()">Start the story ✨</button>
+  <hr style="margin: 30px 0;">
 
-  <div id="story" class="card" style="display:none; margin-top:30px;"></div>
-</section>
+  <h3>The Story Begins…</h3>
+  <p id="storyText">
+    You wake up and realize you have one perfect day with me.<br>
+    What do you choose?
+  </p>
 
-<section id="art">
-  <div class="card">
-    <h2>Art / Drawing 🎨</h2>
-    <img src="PASTE_IMAGE_URL_HERE">
+  <div id="choices">
+    <button onclick="choose(0)">Get lost in a city and explore hidden alleys together, laughing at every corner 💘</button>
+    <button onclick="choose(1)">Stay inside and make a cozy chaos of pillows, blankets, and silly games 🫶</button>
+    <button onclick="choose(2)">Do something completely stupid but unforgettable, like dancing in the rain 😈</button>
   </div>
 </section>
 
 <script>
-function showSection(id) {
-  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-}
-
-const storyEl = document.getElementById("story");
-
-function startStory() {
-  storyEl.style.display = "block";
-  nextScene(0);
-}
-
-const scenes = [
+const story = [
   { text: "You wake up and realize you have one perfect day with me.\nThe sunlight hits your face and makes you smile.", choices:[
-      ["Check your phone for my message, curious about my plans 💌",1],
-      ["Stay in bed a little longer and daydream about us 🌸",2]
+      ["Get lost in a city and explore hidden alleys together, laughing at every corner 💘",1],
+      ["Stay inside and make a cozy chaos of pillows, blankets, and silly games 🫶",2],
+      ["Do something completely stupid but unforgettable, like dancing in the rain 😈",3]
   ]},
-  { text: "The quiet morning feels magical.\nWhat will you do first?", choices:[
-      ["Text me something silly to make me laugh 😈",3],
-      ["Get up and prepare a little breakfast, thinking of me 🍳",4]
+  { text: "The city is lively and colorful.\nEvery street feels like an adventure waiting for us.", choices:[
+      ["Wander into a cute little café and order the weirdest drinks on the menu, sharing laughter ☕💕",4],
+      ["Peek into quirky shops and try on funny hats, taking selfies together 🤪",5]
   ]},
-  { text: "I reply almost instantly with emojis and love.\nYour heart races.", choices:[
-      ["Jump out of bed, ready for adventure 💘",5],
-      ["Take a moment to write a funny reply 😆",6]
+  { text: "The indoor chaos turns into laughter and warmth.\nWe play silly games, building forts out of blankets and pillows.", choices:[
+      ["Cook something messy together and eat it anyway 🍳😆",6],
+      ["Make up a secret handshake and practice it until we’re giggling 🖐️",7]
   ]},
-  { text: "You head outside, the world is ours today.\nWhere do we go first?", choices:[
-      ["Take a spontaneous walk in the city, holding hands 🏙️",7],
-      ["Head to the park and lie on the grass, talking about everything 🌳",8],
-      ["Find a quiet café and order something weird to try ☕",9]
+  { text: "Dancing in the rain feels magical.\nWe are soaked but smiling, making every passerby curious.", choices:[
+      ["Splash puddles like children and take goofy pictures 📸",6],
+      ["Run under streetlights and pretend we are in a movie scene 🌧️",7]
   ]},
-  { text: "The city streets are lively.\nYou bump into a street performer.", choices:[
-      ["Join in and dance ridiculously with them 🕺",10],
-      ["Cheer from the sidelines and take selfies 🤳",11]
+  { text: "The café is cozy and smells of chocolate.\nYou sip the weirdest hot chocolate and share stories about dreams.", choices:[
+      ["Talk about our future adventures and laugh about impossible plans 💌",8],
+      ["Playfully compete to finish each other’s drink first 😆",8]
   ]},
-  { text: "In the park, the sun warms your skin.\nYou feel completely happy.", choices:[
-      ["Lie down and make funny cloud shapes together ☁️",12],
-      ["Playfully chase each other around the trees 🌿",13]
+  { text: "The shops are whimsical.\nWe pick small trinkets that make each other smile.", choices:[
+      ["Buy a tiny memento and make up a story for it 🎁",8],
+      ["Try on silly hats and pose dramatically for each other 🤴👸",8]
   ]},
-  { text: "Your laughter fills the air.\nTime for a snack?", choices:[
-      ["Grab ice cream from a random shop 🍦",14],
-      ["Sit on a bench and share homemade cookies 🍪",15]
+  { text: "Cooking chaos makes the kitchen a mess.\nFlour everywhere, but our hearts are full.", choices:[
+      ["Bake a heart-shaped cake together and decorate it with our own style ❤️",8],
+      ["Taste everything and laugh at how badly it turns out 😅",8]
   ]},
-  { text: "As you walk, you see a cute little bookstore.\nDo you go in?", choices:[
-      ["Yes, explore books and whisper about stories 📖",16],
-      ["No, continue wandering, laughing at nothing in particular 😄",17]
+  { text: "Secret handshakes and rain dances are memories for the books.\nTime feels endless.", choices:[
+      ["Sit on the park bench, sharing a blanket and talking about everything 🌳",8],
+      ["Lie on the grass, counting clouds and making up stories ☁️",8]
   ]},
-  { text: "You find a funny gift shop.\nSomething catches your eye.", choices:[
-      ["Buy silly matching hats and wear them 🤪",18],
-      ["Pick a tiny trinket that reminds you of each other 💍",19]
+  { text: "Sunset comes.\nThe sky is painted with colors, perfect for quiet moments.", choices:[
+      ["Hold hands on a hill and watch the sunset, talking softly about life 🌅",9],
+      ["Head to a cozy café to sip warm chocolate, sharing thoughts and smiles ☕💕",9]
   ]},
-  { text: "Time passes, and sunset is near.\nWhere do you go?", choices:[
-      ["Sit on a hill to watch the sunset together 🌅",20],
-      ["Head to a cozy café to sip hot chocolate ☕",21]
-  ]},
-  { text: "You feel sleepy but content.\nDo you want to continue the adventure?", choices:[
-      ["Yes, let’s sneak out and chase the moon 🌙",22],
-      ["No, cuddle inside and tell funny stories 🛋️",23]
-  ]},
-  { text: "Under the stars, everything feels magical.\nYou hold hands.", choices:[
-      ["Make up a secret handshake just for us 🤝",24],
-      ["Whisper a silly made-up secret only we know 🤫",25]
-  ]},
-  { text: "The night grows quiet.\nDo you want one last memory today?", choices:[
-      ["Yes, let’s run through the empty streets laughing 🏃‍♂️💨",26],
-      ["Yes, lie on a blanket and count stars together ✨",27]
-  ]},
-  { text: "Finally, the day ends.\nYou feel utterly happy and chaotic.", choices:[
-      ["Text me 'best day ever 💘' and smile",28],
-      ["Draw a little sketch of today and send it 😄",29]
-  ]},
-  { text: "You’re thinking about our next adventure.\nA new idea sparks in your mind.", choices:[
-      ["Plan a secret scavenger hunt for me 🗺️",30],
-      ["Think of a chaotic food challenge we could try 🍕",31],
-      ["Write a silly poem about today 💌",32]
-  ]},
-  { text: "Late night snacks are calling.\nWhat crazy snack combo will you make?", choices:[
-      ["Mix chocolate and chips just to see what happens 🍫+🍟",33],
-      ["Bake a tiny cake shaped like a heart ❤️",34]
-  ]},
-  { text: "The day finally winds down.\nYou feel peaceful.", choices:[
-      ["Send me a voice note laughing at today’s chaos 🎙️",0],
-      ["Close your eyes and imagine tomorrow’s madness 😴",0]
+  { text: "The night grows calm.\nWe cuddle, laugh, and whisper secrets under the stars.", choices:[
+      ["Plan a secret scavenger hunt for tomorrow 🗺️",0],
+      ["Write a silly poem about today and read it to each other 💌",0],
+      ["Mix chocolate and chips for a late-night snack adventure 🍫+🍟",0]
   ]}
 ];
 
-function nextScene(i){
-  const s = scenes[i];
-  storyEl.innerHTML = `<p>${s.text}</p>`;
-  s.choices.forEach(c=>{
-    const b=document.createElement("button");
-    b.className="choice";
-    b.textContent=c[0];
-    b.onclick=()=>nextScene(c[1]);
-    storyEl.appendChild(b);
+let currentScene = 0;
+
+function choose(choiceIndex){
+  const nextScene = story[currentScene].choices[choiceIndex][1];
+  currentScene = nextScene;
+  updateScene();
+}
+
+function updateScene(){
+  const scene = story[currentScene];
+  document.getElementById("storyText").innerHTML = scene.text.replace(/\n/g,"<br>");
+  const choicesDiv = document.getElementById("choices");
+  choicesDiv.innerHTML = "";
+  scene.choices.forEach((c,i)=>{
+    const btn = document.createElement("button");
+    btn.innerHTML = c[0];
+    btn.onclick = ()=>choose(i);
+    choicesDiv.appendChild(btn);
   });
 }
 </script>
