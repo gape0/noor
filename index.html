@@ -141,47 +141,65 @@ img {
     What do you choose?
   </p>
 
-  <div id="choices"></div>
+  <div id="choices">
+    <button id="choice1"></button>
+    <button id="choice2"></button>
+    <button id="choice3"></button>
+  </div>
 </section>
 
 <script>
-  // The adventure story: 10 steps, 3 choices each
-  const story = [
-    { text: "Step 1: How should we start our day?", choices: ["Go for a coffee", "Walk in the park", "Get lost in the city"] },
-    { text: "Step 2: What do we do next?", choices: ["Buy a cute dessert", "Sit by the fountain", "Take a random bus"] },
-    { text: "Step 3: Afternoon vibes?", choices: ["Picnic on the grass", "Visit an art gallery", "Chase street performers"] },
-    { text: "Step 4: Feeling adventurous?", choices: ["Climb a small hill", "Draw each other", "Try a new hobby together"] },
-    { text: "Step 5: Midday surprise?", choices: ["Share secret stories", "Dance in the square", "Sneak into a photo booth"] },
-    { text: "Step 6: Snack time?", choices: ["Ice cream challenge", "Bake something chaotic", "Taste random street food"] },
-    { text: "Step 7: Unexpected turn?", choices: ["Ride a carousel", "Jump in puddles", "Sing to strangers"] },
-    { text: "Step 8: Quiet moment?", choices: ["Read together under a tree", "Watch clouds", "Share music with headphones"] },
-    { text: "Step 9: Evening mischief?", choices: ["Chase sunset photos", "Write a tiny poem", "Draw hearts on foggy windows"] },
-    { text: "Step 10: Final memory?", choices: ["Firefly jar magic", "Tiny stargazing picnic", "Hold hands on a rooftop"] },
-    { text: "The day ends perfectly. Our hearts are full 💖", choices: ["End the adventure 🌙"] }
+  const adventure = [
+    ["Go for a coffee 💖","Walk in the park 🌳","Get lost in the city 🏙️"],
+    ["Buy a cute dessert 🍰","Sit by the fountain 💦","Take a random bus 🚌"],
+    ["Picnic on the grass 🧺","Visit an art gallery 🎨","Chase street performers 🎭"],
+    ["Climb a small hill ⛰️","Draw each other ✏️","Try a new hobby together 🎯"],
+    ["Share secret stories 🤫","Dance in the square 💃","Sneak into a photo booth 📸"],
+    ["Ice cream challenge 🍦","Bake something chaotic 🍪","Taste random street food 🌮"],
+    ["Ride a carousel 🎠","Jump in puddles 🌧️","Sing to strangers 🎤"],
+    ["Read together under a tree 📚","Watch clouds ☁️","Share music with headphones 🎧"],
+    ["Chase sunset photos 🌅","Write a tiny poem 📝","Draw hearts on foggy windows ❤️"],
+    ["Firefly jar magic 🪄","Tiny stargazing picnic ✨","Hold hands on a rooftop 🏙️"]
   ];
 
-  let currentStep = 0;
+  const alerts = [
+    ["Coffee date chosen ☕","Park stroll chosen 🌳","City adventure chosen 🏙️"],
+    ["Dessert time 🍰","Fountain pause 💦","Bus adventure 🚌"],
+    ["Picnic bliss 🧺","Art admiration 🎨","Street chaos 🎭"],
+    ["Hill conquered ⛰️","Portraits made ✏️","New hobby trial 🎯"],
+    ["Secrets shared 🤫","Square dance 💃","Photo booth fun 📸"],
+    ["Ice cream frenzy 🍦","Baking chaos 🍪","Street taste 🌮"],
+    ["Carousel spin 🎠","Puddle jump 🌧️","Street serenade 🎤"],
+    ["Quiet reading 📚","Cloud watching ☁️","Music sharing 🎧"],
+    ["Sunset chase 🌅","Poem written 📝","Hearts drawn ❤️"],
+    ["Firefly magic 🪄","Star picnic ✨","Rooftop hands 🏙️"]
+  ];
 
-  function updateScene() {
-    const scene = story[currentStep];
-    document.getElementById("storyText").innerHTML = scene.text.replace(/\n/g,"<br>");
-    const choicesDiv = document.getElementById("choices");
-    choicesDiv.innerHTML = "";
-    scene.choices.forEach((choice, index) => {
-      const btn = document.createElement("button");
-      btn.innerHTML = choice;
-      btn.onclick = () => {
-        currentStep++;
-        if (currentStep >= story.length) currentStep = story.length - 1;
-        updateScene();
-      };
-      choicesDiv.appendChild(btn);
-    });
+  let step = 0;
+
+  function setChoices() {
+    document.getElementById("choice1").innerText = adventure[step][0];
+    document.getElementById("choice2").innerText = adventure[step][1];
+    document.getElementById("choice3").innerText = adventure[step][2];
+
+    document.getElementById("choice1").onclick = () => nextStep(0);
+    document.getElementById("choice2").onclick = () => nextStep(1);
+    document.getElementById("choice3").onclick = () => nextStep(2);
   }
 
-  // Initialize first scene
-  updateScene();
-</script>
+  function nextStep(choiceIndex) {
+    alert(alerts[step][choiceIndex]);
+    step++;
+    if (step < adventure.length) {
+      document.getElementById("storyText").innerHTML = `Step ${step+1}: What do you choose?`;
+      setChoices();
+    } else {
+      document.getElementById("storyText").innerHTML = "The day ends perfectly. Our hearts are full 💖";
+      document.getElementById("choices").style.display = "none";
+    }
+  }
 
+  setChoices();
+</script>
 </body>
 </html>
