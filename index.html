@@ -141,90 +141,46 @@ img {
     What do you choose?
   </p>
 
-  <div id="choices">
-    <button onclick="choose(0)">Get lost in a city and explore hidden alleys together, laughing at every corner 💘</button>
-    <button onclick="choose(1)">Stay inside and make a cozy chaos of pillows, blankets, and silly games 🫶</button>
-    <button onclick="choose(2)">Do something completely stupid but unforgettable, like dancing in the rain 😈</button>
-  </div>
+  <div id="choices"></div>
 </section>
 
 <script>
-const story = [
-  { text: "You wake up and realize you have one perfect day with me.\nThe sunlight hits your face and makes you smile.", choices:[
-      ["Get lost in a city and explore hidden alleys together, laughing at every corner 💘",1],
-      ["Stay inside and make a cozy chaos of pillows, blankets, and silly games 🫶",2],
-      ["Do something completely stupid but unforgettable, like dancing in the rain 😈",3]
-  ]},
-  { text: "The city is lively and colorful.\nEvery street feels like an adventure waiting for us.", choices:[
-      ["Wander into a cute little café and order the weirdest drinks on the menu, sharing laughter ☕💕",4],
-      ["Peek into quirky shops and try on funny hats, taking selfies together 🤪",5]
-  ]},
-  { text: "The indoor chaos turns into laughter and warmth.\nWe play silly games, building forts out of blankets and pillows.", choices:[
-      ["Cook something messy together and eat it anyway 🍳😆",6],
-      ["Make up a secret handshake and practice it until we’re giggling 🖐️",7]
-  ]},
-  { text: "Dancing in the rain feels magical.\nWe are soaked but smiling, making every passerby curious.", choices:[
-      ["Splash puddles like children and take goofy pictures 📸",6],
-      ["Run under streetlights and pretend we are in a movie scene 🌧️",7]
-  ]},
-  { text: "The café is cozy and smells of chocolate.\nYou sip the weirdest hot chocolate and share stories about dreams.", choices:[
-      ["Talk about our future adventures and laugh about impossible plans 💌",8],
-      ["Playfully compete to finish each other’s drink first 😆",8]
-  ]},
-  { text: "The shops are whimsical.\nWe pick small trinkets that make each other smile.", choices:[
-      ["Buy a tiny memento and make up a story for it 🎁",8],
-      ["Try on silly hats and pose dramatically for each other 🤴👸",8]
-  ]},
-  { text: "Cooking chaos makes the kitchen a mess.\nFlour everywhere, but our hearts are full.", choices:[
-      ["Bake a heart-shaped cake together and decorate it with our own style ❤️",8],
-      ["Taste everything and laugh at how badly it turns out 😅",8]
-  ]},
-  { text: "Secret handshakes and rain dances are memories for the books.\nTime feels endless.", choices:[
-      ["Sit on the park bench, sharing a blanket and talking about everything 🌳",8],
-      ["Lie on the grass, counting clouds and making up stories ☁️",8]
-  ]},
-  { text: "Sunset comes.\nThe sky is painted with colors, perfect for quiet moments.", choices:[
-      ["Hold hands on a hill and watch the sunset, talking softly about life 🌅",9],
-      ["Head to a cozy café to sip warm chocolate, sharing thoughts and smiles ☕💕",9]
-  ]},
-  { text: "The night grows calm.\nWe cuddle, laugh, and whisper secrets under the stars.", choices:[
-      ["Plan a secret scavenger hunt for tomorrow 🗺️",0],
-      ["Write a silly poem about today and read it to each other 💌",0],
-      ["Mix chocolate and chips for a late-night snack adventure 🍫+🍟",0]
-  ]}
-];
+  // The adventure story: 10 steps, 3 choices each
+  const story = [
+    { text: "Step 1: How should we start our day?", choices: ["Go for a coffee", "Walk in the park", "Get lost in the city"] },
+    { text: "Step 2: What do we do next?", choices: ["Buy a cute dessert", "Sit by the fountain", "Take a random bus"] },
+    { text: "Step 3: Afternoon vibes?", choices: ["Picnic on the grass", "Visit an art gallery", "Chase street performers"] },
+    { text: "Step 4: Feeling adventurous?", choices: ["Climb a small hill", "Draw each other", "Try a new hobby together"] },
+    { text: "Step 5: Midday surprise?", choices: ["Share secret stories", "Dance in the square", "Sneak into a photo booth"] },
+    { text: "Step 6: Snack time?", choices: ["Ice cream challenge", "Bake something chaotic", "Taste random street food"] },
+    { text: "Step 7: Unexpected turn?", choices: ["Ride a carousel", "Jump in puddles", "Sing to strangers"] },
+    { text: "Step 8: Quiet moment?", choices: ["Read together under a tree", "Watch clouds", "Share music with headphones"] },
+    { text: "Step 9: Evening mischief?", choices: ["Chase sunset photos", "Write a tiny poem", "Draw hearts on foggy windows"] },
+    { text: "Step 10: Final memory?", choices: ["Firefly jar magic", "Tiny stargazing picnic", "Hold hands on a rooftop"] },
+    { text: "The day ends perfectly. Our hearts are full 💖", choices: ["End the adventure 🌙"] }
+  ];
 
-let currentScene = 0;
+  let currentStep = 0;
 
-function choose(choiceIndex){
-  const nextScene = story[currentScene].choices[choiceIndex][1];
-  currentScene = nextScene;
+  function updateScene() {
+    const scene = story[currentStep];
+    document.getElementById("storyText").innerHTML = scene.text.replace(/\n/g,"<br>");
+    const choicesDiv = document.getElementById("choices");
+    choicesDiv.innerHTML = "";
+    scene.choices.forEach((choice, index) => {
+      const btn = document.createElement("button");
+      btn.innerHTML = choice;
+      btn.onclick = () => {
+        currentStep++;
+        if (currentStep >= story.length) currentStep = story.length - 1;
+        updateScene();
+      };
+      choicesDiv.appendChild(btn);
+    });
+  }
+
+  // Initialize first scene
   updateScene();
-}
-
-function updateScene(){
-  const scene = story[currentScene];
-  document.getElementById("storyText").innerHTML = scene.text.replace(/\n/g,"<br>");
-  const choicesDiv = document.getElementById("choices");
-  choicesDiv.innerHTML = "";
-  scene.choices.forEach((c,i)=>{
-    const btn = document.createElement("button");
-    btn.innerHTML = c[0];
-    btn.onclick = ()=>choose(i);
-    choicesDiv.appendChild(btn);
-  });
-}
-</script>
-
-<script>
-setInterval(()=>{
-  const h=document.createElement("div");
-  h.className="heart";
-  h.textContent=Math.random()>0.5?"🤍":"💗";
-  h.style.left=Math.random()*100+"vw";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),9000);
-},500);
 </script>
 
 </body>
