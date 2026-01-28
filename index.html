@@ -140,6 +140,13 @@ img {
       <option>Unintentional charm</option>
     </select>
 
+    <p>Choose your adventure path:</p>
+    <select id="adventureSelect">
+      <option value="cityAdventure">Get lost in a city</option>
+      <option value="cafeBowlingAdventure">Cafe & Bowling day</option>
+      <option value="stayHomeAdventure">Stay home together</option>
+    </select>
+
     <button class="choice" onclick="startStory()">Start the story ✨</button>
   </div>
 
@@ -161,52 +168,75 @@ function showSection(id) {
 
 const storyEl = document.getElementById("story");
 
+// Three 10-step adventure stories
+const adventures = {
+  cityAdventure: [
+    { text: "Step 1: How should we start our day?", choices: ["Go for a coffee", "Walk in the park", "Get lost in the city"] },
+    { text: "Step 2: What do we do next?", choices: ["Buy a cute dessert", "Sit by the fountain", "Take a random bus"] },
+    { text: "Step 3: Afternoon vibes?", choices: ["Picnic on the grass", "Visit an art gallery", "Chase street performers"] },
+    { text: "Step 4: Feeling adventurous?", choices: ["Climb a small hill", "Draw each other", "Try a new hobby together"] },
+    { text: "Step 5: Midday surprise?", choices: ["Share secret stories", "Dance in the square", "Sneak into a photo booth"] },
+    { text: "Step 6: Snack time?", choices: ["Ice cream challenge", "Bake something chaotic", "Taste random street food"] },
+    { text: "Step 7: Unexpected turn?", choices: ["Ride a carousel", "Jump in puddles", "Sing to strangers"] },
+    { text: "Step 8: Quiet moment?", choices: ["Read together under a tree", "Watch clouds", "Share music with headphones"] },
+    { text: "Step 9: Evening mischief?", choices: ["Chase sunset photos", "Write a tiny poem", "Draw hearts on foggy windows"] },
+    { text: "Step 10: Final memory?", choices: ["Firefly jar magic", "Tiny stargazing picnic", "Hold hands on a rooftop"] },
+    { text: "The day ends perfectly. Our hearts are full 💖", choices: ["End the adventure 🌙"] }
+  ],
+  cafeBowlingAdventure: [
+    { text: "Step 1: Where to start?", choices: ["Go to the cafe", "Go bowling", "Stay outside"] },
+    { text: "Step 2: At the cafe...", choices: ["Order coffee", "Share a pastry", "Chat with barista"] },
+    { text: "Step 3: Bowling time!", choices: ["Play seriously", "Cheer loudly", "Cheat playfully"] },
+    { text: "Step 4: Snack break?", choices: ["Eat fries", "Eat ice cream", "Eat pizza"] },
+    { text: "Step 5: Unexpected fun?", choices: ["Try a new drink", "Draw silly sketches", "Play mini-game"] },
+    { text: "Step 6: Random challenge?", choices: ["Dance in cafe", "Do mini bowling trick", "Sing loudly"] },
+    { text: "Step 7: Calm moment?", choices: ["Sit outside", "People-watch", "Take photos"] },
+    { text: "Step 8: Evening snack?", choices: ["Bake cookies", "Buy donuts", "Share a smoothie"] },
+    { text: "Step 9: Sweet ending?", choices: ["Take a selfie", "Write notes for each other", "Pick a lucky number"] },
+    { text: "Step 10: End the night?", choices: ["High-five", "Bow dramatically", "Hold hands walking home"] },
+    { text: "The night ends perfectly. Smiles all around 💖", choices: ["End the adventure 🌙"] }
+  ],
+  stayHomeAdventure: [
+    { text: "Step 1: Morning comfort?", choices: ["Make breakfast together", "Watch cartoons", "Cuddle in bed"] },
+    { text: "Step 2: Mid-morning fun?", choices: ["Play board game", "Build a fort", "Dance around the room"] },
+    { text: "Step 3: Creative session?", choices: ["Draw each other", "Bake cookies", "Write silly poems"] },
+    { text: "Step 4: Snack time?", choices: ["Make smoothie", "Eat chocolate", "Try weird snack combo"] },
+    { text: "Step 5: Quiet moment?", choices: ["Read book together", "Listen to music", "Meditate side by side"] },
+    { text: "Step 6: Movie hour?", choices: ["Comedy", "Romance", "Animated classic"] },
+    { text: "Step 7: Dance break?", choices: ["Salsa", "Freestyle", "Slow dance"] },
+    { text: "Step 8: Evening snack?", choices: ["Make popcorn", "Ice cream sundaes", "Bake muffins"] },
+    { text: "Step 9: Nighttime fun?", choices: ["Star-gazing from window", "Write letters", "Tell stories"] },
+    { text: "Step 10: Cozy ending?", choices: ["Cuddle up", "Sing lullaby", "Share secrets"] },
+    { text: "The day ends perfectly at home. Hearts are full 💖", choices: ["End the adventure 🌙"] }
+  ]
+};
+
+let currentAdventure = adventures.cityAdventure; // default
+let step = 0;
+
 function startStory() {
+  const selected = document.getElementById("adventureSelect").value;
+  currentAdventure = adventures[selected];
+  step = 0;
   storyEl.style.display = "block";
-  nextScene(0);
+  nextScene(step);
 }
 
-const scenes = [
-  { text:"You wake up feeling oddly happy.", choices:[[ "Check your phone",1],[ "Stay in bed",2 ]]},
-  { text:"There’s a message from me.", choices:[[ "Smile immediately",3],[ "Reply dramatically",4 ]]},
-  { text:"The quiet feels safe.", choices:[[ "Think about us",3],[ "Get coffee",5 ]]},
-  { text:"We decide to spend the day together.", choices:[[ "No plan",6],[ "Overplan everything",7 ]]},
-  { text:"I laugh at your reply.", choices:[[ "Be proud",6],[ "Double down",8 ]]},
-  { text:"Coffee becomes talking.", choices:[[ "Deep talk",9],[ "Jokes only",10 ]]},
-  { text:"We wander without direction.", choices:[[ "Hold hands",11],[ "Race each other",12 ]]},
-  { text:"The plan collapses instantly.", choices:[[ "Embrace chaos",12],[ "Fix it",13 ]]},
-  { text:"I send something unhinged.", choices:[[ "Match energy",12],[ "Fake shock",10 ]]},
-  { text:"Conversation gets soft.", choices:[[ "Share a fear",14],[ "Change topic",10 ]]},
-  { text:"We laugh too much.", choices:[[ "Laugh harder",12],[ "Catch breath",15 ]]},
-  { text:"Hands touch accidentally.", choices:[[ "Don’t move away",16],[ "Get shy",17 ]]},
-  { text:"Chaos wins.", choices:[[ "Create a memory",18],[ "Pretend normal",13 ]]},
-  { text:"The plan works… somehow.", choices:[[ "Celebrate",18],[ "Question reality",15 ]]},
-  { text:"It feels real.", choices:[[ "Let it",16],[ "Overthink",17 ]]},
-  { text:"Time disappears.", choices:[[ "Ignore it",18],[ "Check clock",19 ]]},
-  { text:"Everything feels warm.", choices:[[ "Stay here",20],[ "Say something sweet",21 ]]},
-  { text:"Your heart races.", choices:[[ "Admit it",21],[ "Hide it",19 ]]},
-  { text:"This moment matters.", choices:[[ "Save it",22],[ "Live it",20 ]]},
-  { text:"Reality knocks.", choices:[[ "Ignore it",20],[ "Answer it",23 ]]},
-  { text:"You feel calm.", choices:[[ "Breathe",24],[ "Smile quietly",22 ]]},
-  { text:"Words come easily.", choices:[[ "Say them",25],[ "Write later",24 ]]},
-  { text:"You wish time stopped.", choices:[[ "Tell me",25],[ "Keep it inside",26 ]]},
-  { text:"The world resumes.", choices:[[ "Stay close",27],[ "Walk home",26 ]]},
-  { text:"The day softens.", choices:[[ "Thank me",28],[ "Say nothing",27 ]]},
-  { text:"You say it.", choices:[[ "Mean it",28],[ "Laugh after",27 ]]},
-  { text:"Silence feels safe.", choices:[[ "Let it be",29],[ "Break it",28 ]]},
-  { text:"We don’t rush the end.", choices:[[ "Slow goodbye",29],[ "Promise more",29 ]]},
-  { text:"You know you’re loved.", choices:[[ "Restart story 🔁",0 ]]},
-  { text:"The day ends perfectly.", choices:[[ "Restart story 🔁",0 ]]}
-];
-
-function nextScene(i){
-  const s = scenes[i];
-  storyEl.innerHTML = `<p>${s.text}</p>`;
-  s.choices.forEach(c=>{
-    const b=document.createElement("button");
-    b.className="choice";
-    b.textContent=c[0];
-    b.onclick=()=>nextScene(c[1]);
+function nextScene(i) {
+  const scene = currentAdventure[i];
+  storyEl.innerHTML = `<p>${scene.text}</p>`;
+  scene.choices.forEach(choiceText => {
+    const b = document.createElement("button");
+    b.className = "choice";
+    b.textContent = choiceText;
+    b.onclick = () => {
+      step++;
+      if (step < currentAdventure.length) {
+        nextScene(step);
+      } else {
+        storyEl.innerHTML = "<p>The adventure ends perfectly! 💖</p>";
+      }
+    };
     storyEl.appendChild(b);
   });
 }
