@@ -8,12 +8,13 @@
 <body>
 
 <header>
-  <h1>Happy Valentine 💘</h1>
-  <p>This is our little world</p>
+  <h1>Happy Valentine Noor 🤍</h1>
+  <p>This is a little gift I made for you</p>
   <a href="index.html"><button>Home</button></a>
   <a href="love.html"><button>Things I Love About You</button></a>
   <a href="adventure.html"><button>Our Adventure</button></a>
   <a href="art.html"><button>Art</button></a>
+  <a href="mwah.html"><button>Mwah 🤍</button></a>
 </header>
 
 <section id="adventure" class="active">
@@ -24,26 +25,35 @@
   <input id="playerName" placeholder="Your name 💕" />
 
   <p>Class:</p>
-  <input value="Chaotic Romantic" disabled />
+  <select id="playerClass">
+    <option value="Sweet Romantic">Sweet Romantic</option>
+    <option value="Wandering Girl">Wandering Girl</option>
+    <option value="Gentle Lover">Gentle Lover</option>
+    <option value="Playful Princess">Playful Princess</option>
+  </select>
 
   <p>Special Ability:</p>
-  <input value="Turns ordinary moments into memories" disabled />
+  <select id="playerAbility">
+    <option value="Turns every moment into memories">Turns every moment into memories</option>
+    <option value="Makes hearts flutter with a smile">Makes hearts flutter with a smile</option>
+    <option value="Creates magical surprises">Creates magical surprises</option>
+    <option value="Makes problems disappear">Makes problems disappear</option>
+  </select>
 
   <hr style="margin: 30px 0;">
 
-  <h3>The Story Begins…</h3>
-  <p>
-    You wake up and realize you have one perfect day with me.<br>
-    What do you choose?
-  </p>
-
-  <button onclick="chooseAdventure('city')">Get lost in a city</button>
-  <button onclick="chooseAdventure('chaos')">Stay inside and be chaotic</button>
-  <button onclick="chooseAdventure('silly')">Do something stupid together</button>
-
-  <p style="margin-top: 20px;">
-    (Tell me your choice 💬)
-  </p>
+  <div id="storyContainer">
+    <h3>The Story Begins…</h3>
+    <p id="storyText">
+      You wake up and realize you have one perfect day with me.<br>
+      What do you choose?
+    </p>
+    <div id="choices">
+      <button onclick="chooseAdventure('city')">Get lost in a city</button>
+      <button onclick="chooseAdventure('chaos')">Stay inside and be chaotic</button>
+      <button onclick="chooseAdventure('silly')">Do something stupid together</button>
+    </div>
+  </div>
 </section>
 
 <script src="js/main.js"></script>

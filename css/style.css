@@ -38,7 +38,7 @@ section.active {
   display: block;
 }
 
-input {
+input, select {
   padding: 10px;
   border-radius: 10px;
   border: none;
@@ -65,5 +65,5 @@ img {
 
 @keyframes floatUp {
   from { transform: translateY(0); opacity: 0.5; }
-  to { transform: translateY(-110vh); opacity: 0; }
+  to { transform: translateY(-110vh); opacity: 0.5; }
 }
