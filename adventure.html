@@ -1,37 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Our Adventure 🎭</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header>
-  <h1>Our Adventure 🎭</h1>
-  <a href="index.html"><button class="nav-button">Home</button></a>
-  <a href="love.html"><button class="nav-button">Things I Love</button></a>
-  <a href="adventure.html"><button class="nav-button">Our Adventure</button></a>
-  <a href="art.html"><button class="nav-button">Art</button></a>
+  <h1>Happy Valentine 💘</h1>
+  <p>This is our little world</p>
+  <a href="index.html"><button>Home</button></a>
+  <a href="love.html"><button>Things I Love About You</button></a>
+  <a href="adventure.html"><button>Our Adventure</button></a>
+  <a href="art.html"><button>Art</button></a>
 </header>
 
-<section>
+<section id="adventure" class="active">
+  <h2>Choose Our Love Adventure 🎭</h2>
+
   <h3>Create Your Character</h3>
   <p>Name:</p>
-  <input placeholder="Your name 💕" />
+  <input id="playerName" placeholder="Your name 💕" />
+
   <p>Class:</p>
   <input value="Chaotic Romantic" disabled />
+
   <p>Special Ability:</p>
   <input value="Turns ordinary moments into memories" disabled />
 
   <hr style="margin: 30px 0;">
 
-  <div id="adventure-content">
-    <p>Click a choice below to start the adventure!</p>
-    <button onclick="showAdventureStep(0)">Start Adventure</button>
-  </div>
+  <h3>The Story Begins…</h3>
+  <p>
+    You wake up and realize you have one perfect day with me.<br>
+    What do you choose?
+  </p>
+
+  <button onclick="chooseAdventure('city')">Get lost in a city</button>
+  <button onclick="chooseAdventure('chaos')">Stay inside and be chaotic</button>
+  <button onclick="chooseAdventure('silly')">Do something stupid together</button>
+
+  <p style="margin-top: 20px;">
+    (Tell me your choice 💬)
+  </p>
 </section>
 
 <script src="js/main.js"></script>
+<script src="js/hearts.js"></script>
+<script src="js/adventure.js"></script>
 </body>
 </html>
