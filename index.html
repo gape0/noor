@@ -87,250 +87,234 @@ function showSection(id){
 const storyEl = document.getElementById("story");
 
 const story = {
-0: {text:"Morning sunshine fills the room, you wake up together. How do you start?", choices:[
-  {text:"Go wander around the city streets, exploring hidden corners", next:1},
-  {text:"Go out for activities like bowling, coffee, or mini golf", next:2},
-  {text:"Stay cozy at home, chatting and cuddling in bed", next:3}
+0: {text:"Morning sunshine fills the room. How do you start your day?", choices:[
+  {text:"Go wander around the city streets", next:1},
+  {text:"Go out for activities like coffee or mini golf", next:2},
+  {text:"Stay cozy at home, chatting and cuddling", next:3}
 ]},
-1: {text:"Walking outside, the streets are alive with energy. Where to head first?", choices:[
-  {text:"Visit a quirky local market and try foods", next:4},
-  {text:"Stop at a street performer and watch them", next:5},
-  {text:"Sit on a bench, people-watch and talk", next:6}
+1: {text:"Strolling through the streets, the city feels alive. Where to head?", choices:[
+  {text:"Explore a quirky market full of treats", next:4},
+  {text:"Visit a street performer and watch them perform", next:5},
+  {text:"Sit on a bench and people-watch together", next:6}
 ]},
-2: {text:"Arriving at activities, excitement fills the air. What do you pick first?", choices:[
-  {text:"Bowling: try to impress each other with strikes", next:7},
-  {text:"Coffee: enjoy aromas and share small talk", next:8},
-  {text:"Mini golf: playful competition with silly bets", next:9}
+2: {text:"At activities, excitement is in the air. Pick one to start.", choices:[
+  {text:"Bowling: try for fun strikes", next:7},
+  {text:"Coffee: enjoy aromas and talk together", next:8},
+  {text:"Mini golf: playful competition with laughs", next:9}
 ]},
-3: {text:"Home feels warm and safe. What do you do together?", choices:[
-  {text:"Read a story aloud, sharing laughs and smiles", next:10},
-  {text:"Play cards or a fun board game together", next:11},
-  {text:"Just cuddle and chat about dreams and plans", next:12}
+3: {text:"Home feels warm. What do you do first?", choices:[
+  {text:"Read a story together aloud", next:10},
+  {text:"Play a board game or cards", next:11},
+  {text:"Cuddle and chat about life dreams", next:12}
 ]},
-4: {text:"Market treats: you try unusual snacks and pastries.", choices:[
-  {text:"Share them and take funny selfies together", next:13},
-  {text:"Pick something for each other to taste", next:14},
-  {text:"Buy a small souvenir to remember the day", next:15}
+4: {text:"Market treats are delicious. Share them or do something else?", choices:[
+  {text:"Share snacks and take funny selfies", next:13},
+  {text:"Buy small souvenirs for each other", next:14},
+  {text:"Try a really unusual snack together", next:15}
 ]},
-5: {text:"The street performer amazes you. How do you react?", choices:[
-  {text:"Cheer loudly, clap and join in the fun", next:16},
-  {text:"Record a short video to remember forever", next:17},
+5: {text:"The performer amazes you. How do you react?", choices:[
+  {text:"Cheer loudly and dance along", next:16},
+  {text:"Record a funny video to remember", next:17},
   {text:"Tip generously and smile at each other", next:18}
 ]},
-6: {text:"Sitting on the bench, you notice a small dog.", choices:[
-  {text:"Pet the dog and play with it together", next:19},
-  {text:"Take photos of the cute moments", next:20},
-  {text:"Chat about childhood memories while watching passersby", next:21}
+6: {text:"Sitting on the bench, a dog approaches. What do you do?", choices:[
+  {text:"Pet the dog and play together", next:19},
+  {text:"Take cute photos of the moment", next:20},
+  {text:"Chat about childhood memories while watching people", next:21}
 ]},
-7: {text:"Bowling time! First throw approaches. What happens?", choices:[
-  {text:"Strike! Celebrate with high-fives and laughter", next:22},
-  {text:"Spare! Laugh and cheer at the attempt", next:23},
-  {text:"Gutter ball 😅, giggle at your failure", next:24}
+7: {text:"Bowling begins. First throw approaches. Outcome?", choices:[
+  {text:"Strike! Celebrate with laughter", next:22},
+  {text:"Spare! Giggle at your attempts", next:23},
+  {text:"Gutter ball 😅, laugh anyway", next:24}
 ]},
-8: {text:"Coffee is delightful. Do you linger or move on?", choices:[
-  {text:"Stay and sip slowly, talking about life", next:22},
-  {text:"Take coffee to go and walk nearby", next:23},
-  {text:"Order a second cup and try pastries", next:24}
+8: {text:"Coffee done. Next step?", choices:[
+  {text:"Stay and sip slowly, talk more", next:22},
+  {text:"Take coffee to go, walk nearby", next:23},
+  {text:"Order a second cup and enjoy pastries", next:24}
 ]},
-9: {text:"Mini golf course awaits. How do you play?", choices:[
-  {text:"Compete playfully, joking about each other's misses", next:22},
-  {text:"Help each other aim and strategize shots", next:23},
-  {text:"Just enjoy hitting the balls and laughing", next:24}
+9: {text:"Mini golf starts. How do you play?", choices:[
+  {text:"Compete playfully, joke about misses", next:22},
+  {text:"Help each other aim shots", next:23},
+  {text:"Just enjoy hitting balls and laughing", next:24}
 ]},
-10: {text:"Reading together brings smiles. What's the story choice?", choices:[
-  {text:"Pick a funny story that makes you laugh", next:22},
-  {text:"Pick a romantic tale that touches your hearts", next:23},
-  {text:"Pick an adventure story and act it out", next:24}
+10: {text:"Reading aloud. Pick story type?", choices:[
+  {text:"Funny story that makes you laugh", next:22},
+  {text:"Romantic tale that touches your hearts", next:23},
+  {text:"Adventure story to act out together", next:24}
 ]},
-11: {text:"Board game time. Who goes first and why?", choices:[
-  {text:"You go first, teasing about winning easily", next:22},
-  {text:"Let your partner start and cheer them on", next:23},
-  {text:"Take turns quickly, joking through the game", next:24}
+11: {text:"Board game time. Who goes first?", choices:[
+  {text:"You go first, teasing playfully", next:22},
+  {text:"Let partner start and cheer them", next:23},
+  {text:"Take turns quickly joking all along", next:24}
 ]},
-12: {text:"Cuddling and chatting. Topics come naturally. Where to focus?", choices:[
-  {text:"Talk about dreams and future adventures together", next:22},
-  {text:"Share funny or embarrassing stories from the past", next:23},
-  {text:"Discuss favorite memories and little secrets", next:24}
+12: {text:"Cuddling and chatting. Topic?", choices:[
+  {text:"Talk about dreams and future adventures", next:22},
+  {text:"Share funny or embarrassing stories", next:23},
+  {text:"Discuss favorite memories and secrets", next:24}
 ]},
-13: {text:"After sharing snacks, lunchtime approaches. What do you eat?", choices:[
-  {text:"Cook together something simple but delicious", next:25},
-  {text:"Go out to a small cafe nearby", next:26},
-  {text:"Order delivery and eat at a cozy spot", next:27}
+13: {text:"Snacks done. Lunch time! What to eat?", choices:[
+  {text:"Cook together something simple yet delicious", next:25},
+  {text:"Go to a small café nearby", next:26},
+  {text:"Order delivery and eat cozy at home", next:27}
 ]},
-14: {text:"Lunch time. Try a new dish each?", choices:[
-  {text:"Yes, experiment with exotic flavors together", next:25},
-  {text:"No, stick to comfort foods you love", next:26},
-  {text:"Mix a little of both for fun", next:27}
+14: {text:"Souvenir bought. Next lunch choice?", choices:[
+  {text:"Try exotic dishes together for fun", next:25},
+  {text:"Stick to comfort foods you love", next:26},
+  {text:"Mix both comfort and new foods", next:27}
 ]},
-15: {text:"Pick a fancy restaurant for a special meal.", choices:[
-  {text:"Sit near the window enjoying the view", next:25},
-  {text:"Choose a private corner to talk", next:26},
-  {text:"Sit outside on the patio and enjoy air", next:27}
+15: {text:"Tried unusual snack. Afternoon approaches. What do you do?", choices:[
+  {text:"Share reactions with strangers nearby", next:28},
+  {text:"Walk to park and laugh at the experience", next:29},
+  {text:"Take selfies to remember the silly moment", next:30}
 ]},
-16: {text:"Street performance ends. Afternoon begins. What's next?", choices:[
-  {text:"Walk to a nearby park and relax", next:28},
-  {text:"Explore a small gallery or museum nearby", next:29},
-  {text:"Stop at a local shop to browse together", next:30}
+16: {text:"Cheering and dancing done. Next activity?", choices:[
+  {text:"Go to a nearby park for a walk", next:28},
+  {text:"Visit an art gallery together", next:29},
+  {text:"Stop at a small shop to browse", next:30}
 ]},
-17: {text:"Video taken. Afternoon options appear. What do you choose?", choices:[
-  {text:"Go for a long walk in nature", next:28},
-  {text:"Visit an art gallery you both like", next:29},
-  {text:"Sit in a quiet cafe reading together", next:30}
+17: {text:"Video recorded. Next choice?", choices:[
+  {text:"Take a long nature walk", next:28},
+  {text:"Visit an art exhibit", next:29},
+  {text:"Sit in a quiet café and relax", next:30}
 ]},
-18: {text:"You tipped the performer. How spend afternoon?", choices:[
-  {text:"Go to the library to explore books", next:28},
-  {text:"Stroll down the river path enjoying views", next:29},
-  {text:"Relax in a park lying on the grass", next:30}
+18: {text:"Tipped performer. Next?", choices:[
+  {text:"Relax in the park enjoying nature", next:28},
+  {text:"Walk along the river watching scenery", next:29},
+  {text:"Visit library to explore books", next:30}
 ]},
-19: {text:"Dog distracted you. Afternoon comes. What's next?", choices:[
-  {text:"Walk in a nearby park, play with dogs", next:28},
-  {text:"Visit a pet shop and pick small toys", next:29},
-  {text:"Sit at a cafe watching people and pets", next:30}
+19: {text:"Played with dog. Afternoon ideas?", choices:[
+  {text:"Go to dog park and interact more", next:28},
+  {text:"Visit pet shop and pick small toy", next:29},
+  {text:"Sit at café enjoying pets around", next:30}
 ]},
-20: {text:"Photos done. Afternoon fun begins. Where to go?", choices:[
-  {text:"Picnic in the park with snacks", next:28},
-  {text:"Walk to a scenic viewpoint together", next:29},
-  {text:"Sit by the fountain and talk quietly", next:30}
+20: {text:"Photos taken. Afternoon begins. Choice?", choices:[
+  {text:"Have picnic in nearby park", next:28},
+  {text:"Walk to scenic viewpoint", next:29},
+  {text:"Sit by fountain talking quietly", next:30}
 ]},
-21: {text:"Childhood stories shared. Afternoon rolls in. Choose activity:", choices:[
-  {text:"Play frisbee or ball at the park", next:28},
-  {text:"Visit a small museum or exhibit", next:29},
-  {text:"Walk slowly exploring little streets", next:30}
+21: {text:"Childhood stories shared. Afternoon ideas?", choices:[
+  {text:"Play frisbee in the park", next:28},
+  {text:"Visit small museum", next:29},
+  {text:"Walk slowly exploring streets", next:30}
 ]},
-22: {text:"Afternoon begins. Relaxing outdoors. What do you do?", choices:[
-  {text:"Lie on the grass, watch clouds drift by", next:31},
-  {text:"Take photos and make a fun video", next:32},
-  {text:"Feed birds and enjoy small talk", next:33}
+22: {text:"Outdoor relaxation. What do you do?", choices:[
+  {text:"Lie on grass watching clouds", next:31},
+  {text:"Take playful photos together", next:32},
+  {text:"Feed birds and chat about life", next:33}
 ]},
-23: {text:"Afternoon indoors. How do you spend time?", choices:[
-  {text:"Build something fun with simple materials", next:31},
-  {text:"Read together or watch a small movie", next:32},
-  {text:"Play games or solve puzzles together", next:33}
+23: {text:"Indoors relaxation. Activity?", choices:[
+  {text:"Build something fun from materials", next:31},
+  {text:"Read or watch a movie together", next:32},
+  {text:"Play puzzles or games together", next:33}
 ]},
-24: {text:"Afternoon spent playing and chatting. Evening approaches. What next?", choices:[
-  {text:"Go for dinner outside at a favorite place", next:34},
-  {text:"Cook dinner together at home, making it cozy", next:35},
-  {text:"Order delivery and watch city lights from home", next:36}
+24: {text:"Chatting and playing. Evening comes. Dinner time?", choices:[
+  {text:"Eat dinner outside at favorite restaurant", next:34},
+  {text:"Cook at home together", next:35},
+  {text:"Order delivery and enjoy indoors", next:36}
 ]},
-25: {text:"Dinner at home feels cozy. How do you spend it?", choices:[
-  {text:"Cook together and try new recipes", next:37},
-  {text:"Eat quickly and move to a fun activity", next:38},
-  {text:"Eat slowly, chatting and sharing memories", next:39}
+25: {text:"Cooking together. How to cook?", choices:[
+  {text:"Try a new recipe and laugh at mistakes", next:37},
+  {text:"Cook favorite comfort foods slowly", next:38},
+  {text:"Experiment with funny ingredient swaps", next:39}
 ]},
-26: {text:"Dinner at cafe. Choices after?", choices:[
-  {text:"Take a walk under city lights", next:37},
-  {text:"Sit at a nearby park to digest", next:38},
-  {text:"Go window-shopping for fun and laughs", next:39}
+26: {text:"Café lunch done. Next?", choices:[
+  {text:"Walk under city lights after meal", next:37},
+  {text:"Sit in nearby park to relax", next:38},
+  {text:"Do window-shopping nearby", next:39}
 ]},
-27: {text:"Dinner delivered. How to enjoy it?", choices:[
-  {text:"Eat in bed while talking and laughing", next:37},
-  {text:"Sit on balcony enjoying the evening air", next:38},
-  {text:"Share food while listening to music together", next:39}
+27: {text:"Delivery lunch eaten. Next?", choices:[
+  {text:"Eat in bed chatting", next:37},
+  {text:"Eat on balcony enjoying view", next:38},
+  {text:"Share food while listening to music", next:39}
 ]},
-28: {text:"Evening outdoor. The sun sets beautifully. What do you do?", choices:[
-  {text:"Stargazing while lying on a blanket", next:40},
-  {text:"Take a gentle walk, holding hands closely", next:41},
-  {text:"Sit on a bench, talking about dreams", next:42}
+28: {text:"Afternoon outdoors. Activity?", choices:[
+  {text:"Play catch or frisbee in park", next:40},
+  {text:"Go to a small shopping area", next:41},
+  {text:"Sit and talk on a bench", next:42}
 ]},
-29: {text:"Evening indoor. How to spend night?", choices:[
-  {text:"Play a calm game together before bed", next:40},
-  {text:"Watch an episode of a favorite show", next:41},
-  {text:"Share secrets while lying on the sofa", next:42}
+29: {text:"Afternoon cultural. Activity?", choices:[
+  {text:"Visit museum or exhibit", next:40},
+  {text:"Explore library or bookstore", next:41},
+  {text:"Walk streets and take photos", next:42}
 ]},
-30: {text:"Shopping or exploring. Evening comes. What next?", choices:[
-  {text:"Find a quiet park to rest together", next:40},
-  {text:"Go for a scenic city walk", next:41},
-  {text:"Sit at a small cafe sipping drinks", next:42}
+30: {text:"Afternoon quirky. Next?", choices:[
+  {text:"Laugh about snack experiences", next:40},
+  {text:"Take funny selfies together", next:41},
+  {text:"Do a silly mini-challenge together", next:42}
 ]},
-31: {text:"Night falls. The sky sparkles with stars. What do you do?", choices:[
-  {text:"Stargazing together, sharing secrets quietly", next:43},
-  {text:"Lie on a blanket and chat about life", next:44},
-  {text:"Walk outside holding hands and talking softly", next:45}
+31: {text:"Lie on grass. Night approaches. Next?", choices:[
+  {text:"Watch clouds until sun sets", next:43},
+  {text:"Talk about silly dreams and wishes", next:44},
+  {text:"Take nature photos together", next:45}
 ]},
-32: {text:"Nighttime memories indoors. How do you end the day?", choices:[
-  {text:"Cuddle on the couch sharing thoughts and laughter", next:43},
-  {text:"Whisper dreams for tomorrow and future plans", next:44},
-  {text:"Play a quiet game, enjoying simple joys", next:45}
+32: {text:"Photos done. Night approaches. Choice?", choices:[
+  {text:"Edit funny photos and laugh", next:43},
+  {text:"Make a video montage", next:44},
+  {text:"Send them to friends jokingly", next:45}
 ]},
-33: {text:"Evening ends. You reflect together. What's next?", choices:[
-  {text:"Talk about favorite moments and memories", next:43},
-  {text:"Share hopes for the next adventure together", next:44},
-  {text:"Express feelings and dreams for future days", next:45}
+33: {text:"Feeding birds done. Night approaches. Next?", choices:[
+  {text:"Stargaze on blanket and talk quietly", next:43},
+  {text:"Walk hand-in-hand in park", next:44},
+  {text:"Sit on bench sharing stories", next:45}
 ]},
-34: {text:"Dinner outside done. Night approaches. What do you do?", choices:[
-  {text:"Take a long walk and hold hands", next:46},
-  {text:"Sit on a bench enjoying the city lights", next:47},
-  {text:"Go to a rooftop and look at stars", next:48}
+34: {text:"Dinner outside. Evening fun?", choices:[
+  {text:"Take long walk afterwards", next:46},
+  {text:"Sit at bench talking quietly", next:47},
+  {text:"Go to rooftop and see stars", next:48}
 ]},
-35: {text:"Dinner cooked at home. Nighttime plans?", choices:[
-  {text:"Stargaze from the balcony, chatting softly", next:46},
-  {text:"Watch a romantic movie in dim lights", next:47},
-  {text:"Play a calm board game together", next:48}
+35: {text:"Dinner home. Evening plans?", choices:[
+  {text:"Watch romantic movie together", next:46},
+  {text:"Play calm board game", next:47},
+  {text:"Stargaze from balcony", next:48}
 ]},
-36: {text:"Delivery done. Evening quiet. Choose activity:", choices:[
-  {text:"Walk to a nearby park under lamplights", next:46},
-  {text:"Sit by the window and talk for hours", next:47},
-  {text:"Cuddle on sofa listening to music softly", next:48}
+36: {text:"Dinner delivery. Evening?", choices:[
+  {text:"Walk to park under lamplights", next:46},
+  {text:"Sit by window and talk", next:47},
+  {text:"Cuddle on sofa listening music", next:48}
 ]},
-37: {text:"Evening calm. How do you end dinner time?", choices:[
-  {text:"Take a walk under stars holding hands", next:49},
-  {text:"Sit outside enjoying night air quietly", next:50},
-  {text:"Play a silly game to end evening happily", next:51}
+// Additional branching for shopping path
+41: {text:"Shopping! Where to go?", choices:[
+  {text:"Go to clothing stores", next:49},
+  {text:"Visit bookstore", next:50},
+  {text:"Go gadget shop", next:51}
 ]},
-38: {text:"Dinner done. Evening fun begins. Choose activity:", choices:[
-  {text:"Stroll down quiet streets sharing stories", next:49},
-  {text:"Look at city lights from a small hill", next:50},
-  {text:"Sit in a cafe sipping desserts together", next:51}
+49: {text:"In clothing stores. What to buy?", choices:[
+  {text:"Pick something silly for each other", next:52},
+  {text:"Buy matching outfits", next:53},
+  {text:"Try on funny hats", next:54}
 ]},
-39: {text:"Dinner complete. What night activity feels right?", choices:[
-  {text:"Cuddle while listening to favorite music", next:49},
-  {text:"Tell each other secret dreams and wishes", next:50},
-  {text:"Lie on blanket stargazing and chatting softly", next:51}
+50: {text:"Bookstore. Which section?", choices:[
+  {text:"Romance novels", next:52},
+  {text:"Fantasy and adventure", next:53},
+  {text:"Cookbooks for fun", next:54}
 ]},
-40: {text:"Final night moments. Hearts full. What do you do?", choices:[
-  {text:"Fall asleep smiling, remembering the day fondly", next:52},
-  {text:"Whisper secrets and plans for tomorrow", next:52},
-  {text:"Just hold each other quietly in peace", next:52}
+51: {text:"Gadget store. What do you pick?", choices:[
+  {text:"Funny small gadgets", next:52},
+  {text:"Useful tools for each other", next:53},
+  {text:"Tech toys to play together", next:54}
 ]},
-41: {text:"Nighttime reflections. Close the day happily. Choice?", choices:[
-  {text:"Talk about favorite moments and laughs", next:52},
-  {text:"Share hopes for future adventures together", next:52},
-  {text:"Cuddle and drift off holding hands", next:52}
+52: {text:"Silly choice made. Reactions?", choices:[
+  {text:"Laugh uncontrollably together", next:55},
+  {text:"Take selfies of silly moment", next:55},
+  {text:"Share the moment with friends", next:55}
 ]},
-42: {text:"Evening quiet. End day with closeness. What do you pick?", choices:[
-  {text:"Share dreams while lying together comfortably", next:52},
-  {text:"Express gratitude and love to each other", next:52},
-  {text:"Relax quietly, enjoying simple peaceful moments", next:52}
+53: {text:"Matching or thoughtful items. Reactions?", choices:[
+  {text:"Smile and feel closer", next:55},
+  {text:"Try them on and laugh", next:55},
+  {text:"Plan to use together later", next:55}
 ]},
-43: {text:"The day ends perfectly. Hearts are warm and happy.", choices:[
-  {text:"Restart adventure to relive the memories", next:0}
+54: {text:"Funny or adventurous items. Reactions?", choices:[
+  {text:"Joke and laugh heartily", next:55},
+  {text:"Take playful photos", next:55},
+  {text:"Hide from staff playfully", next:55}
 ]},
-44: {text:"A day to remember, filled with laughter and love.", choices:[
-  {text:"Restart adventure and make new choices again", next:0}
+55: {text:"Evening ends. Reflecting on day, what do you do?", choices:[
+  {text:"Stargaze holding hands quietly", next:56},
+  {text:"Share dreams for future adventures", next:56},
+  {text:"Cuddle and drift to sleep happily", next:56}
 ]},
-45: {text:"You feel close, content, and full of joy.", choices:[
-  {text:"Restart the adventure and explore other paths", next:0}
-]},
-46: {text:"Night sky above. End your day with stars and love.", choices:[
-  {text:"Fall asleep smiling and dreaming happily", next:0}
-]},
-47: {text:"City lights surround you. You feel peaceful together.", choices:[
-  {text:"Go to sleep reflecting on beautiful moments", next:0}
-]},
-48: {text:"Rooftop view ends night beautifully. Cuddle and relax.", choices:[
-  {text:"Drift to sleep with hearts full", next:0}
-]},
-49: {text:"Cuddled after dinner, reflecting on the day.", choices:[
-  {text:"Fall asleep happy and content", next:0}
-]},
-50: {text:"Nighttime quiet, sharing love and memories.", choices:[
-  {text:"Sleep peacefully dreaming together", next:0}
-]},
-51: {text:"Evening laughter fades into calm night.", choices:[
-  {text:"Rest together, holding hands", next:0}
-]},
-52: {text:"The perfect day ends. Hearts are full of love.", choices:[
-  {text:"Restart the adventure to relive it", next:0}
+56: {text:"The perfect day concludes. Hearts are full.", choices:[
+  {text:"Restart adventure and relive day", next:0}
 ]}
 
 function nextScene(i){
