@@ -126,20 +126,6 @@ img {
 
     <input placeholder="Your name 💕" />
 
-    <select>
-      <option>Chaotic Romantic</option>
-      <option>Soft Menace</option>
-      <option>Main Character</option>
-      <option>Accidental Heartbreaker</option>
-    </select>
-
-    <select>
-      <option>Turns moments into memories</option>
-      <option>Makes everything funny</option>
-      <option>Comfort aura</option>
-      <option>Unintentional charm</option>
-    </select>
-
     <p>Choose your adventure path:</p>
     <select id="adventureSelect">
       <option value="cityAdventure">Get lost in a city</option>
@@ -153,65 +139,107 @@ img {
   <div id="story" class="card" style="display:none;"></div>
 </section>
 
-<section id="art">
-  <div class="card">
-    <h2>Art / Drawing 🎨</h2>
-    <img src="PASTE_IMAGE_URL_HERE">
-  </div>
-</section>
-
 <script>
-function showSection(id) {
-  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-}
-
 const storyEl = document.getElementById("story");
 
-// Three 10-step adventure stories
+// Branching adventures with longer text and consequences
 const adventures = {
-  cityAdventure: [
-    { text: "Step 1: How should we start our day?", choices: ["Go for a coffee", "Walk in the park", "Get lost in the city"] },
-    { text: "Step 2: What do we do next?", choices: ["Buy a cute dessert", "Sit by the fountain", "Take a random bus"] },
-    { text: "Step 3: Afternoon vibes?", choices: ["Picnic on the grass", "Visit an art gallery", "Chase street performers"] },
-    { text: "Step 4: Feeling adventurous?", choices: ["Climb a small hill", "Draw each other", "Try a new hobby together"] },
-    { text: "Step 5: Midday surprise?", choices: ["Share secret stories", "Dance in the square", "Sneak into a photo booth"] },
-    { text: "Step 6: Snack time?", choices: ["Ice cream challenge", "Bake something chaotic", "Taste random street food"] },
-    { text: "Step 7: Unexpected turn?", choices: ["Ride a carousel", "Jump in puddles", "Sing to strangers"] },
-    { text: "Step 8: Quiet moment?", choices: ["Read together under a tree", "Watch clouds", "Share music with headphones"] },
-    { text: "Step 9: Evening mischief?", choices: ["Chase sunset photos", "Write a tiny poem", "Draw hearts on foggy windows"] },
-    { text: "Step 10: Final memory?", choices: ["Firefly jar magic", "Tiny stargazing picnic", "Hold hands on a rooftop"] },
-    { text: "The day ends perfectly. Our hearts are full 💖", choices: ["End the adventure 🌙"] }
-  ],
-  cafeBowlingAdventure: [
-    { text: "Step 1: Where to start?", choices: ["Go to the cafe", "Go bowling", "Stay outside"] },
-    { text: "Step 2: At the cafe...", choices: ["Order coffee", "Share a pastry", "Chat with barista"] },
-    { text: "Step 3: Bowling time!", choices: ["Play seriously", "Cheer loudly", "Cheat playfully"] },
-    { text: "Step 4: Snack break?", choices: ["Eat fries", "Eat ice cream", "Eat pizza"] },
-    { text: "Step 5: Unexpected fun?", choices: ["Try a new drink", "Draw silly sketches", "Play mini-game"] },
-    { text: "Step 6: Random challenge?", choices: ["Dance in cafe", "Do mini bowling trick", "Sing loudly"] },
-    { text: "Step 7: Calm moment?", choices: ["Sit outside", "People-watch", "Take photos"] },
-    { text: "Step 8: Evening snack?", choices: ["Bake cookies", "Buy donuts", "Share a smoothie"] },
-    { text: "Step 9: Sweet ending?", choices: ["Take a selfie", "Write notes for each other", "Pick a lucky number"] },
-    { text: "Step 10: End the night?", choices: ["High-five", "Bow dramatically", "Hold hands walking home"] },
-    { text: "The night ends perfectly. Smiles all around 💖", choices: ["End the adventure 🌙"] }
-  ],
-  stayHomeAdventure: [
-    { text: "Step 1: Morning comfort?", choices: ["Make breakfast together", "Watch cartoons", "Cuddle in bed"] },
-    { text: "Step 2: Mid-morning fun?", choices: ["Play board game", "Build a fort", "Dance around the room"] },
-    { text: "Step 3: Creative session?", choices: ["Draw each other", "Bake cookies", "Write silly poems"] },
-    { text: "Step 4: Snack time?", choices: ["Make smoothie", "Eat chocolate", "Try weird snack combo"] },
-    { text: "Step 5: Quiet moment?", choices: ["Read book together", "Listen to music", "Meditate side by side"] },
-    { text: "Step 6: Movie hour?", choices: ["Comedy", "Romance", "Animated classic"] },
-    { text: "Step 7: Dance break?", choices: ["Salsa", "Freestyle", "Slow dance"] },
-    { text: "Step 8: Evening snack?", choices: ["Make popcorn", "Ice cream sundaes", "Bake muffins"] },
-    { text: "Step 9: Nighttime fun?", choices: ["Star-gazing from window", "Write letters", "Tell stories"] },
-    { text: "Step 10: Cozy ending?", choices: ["Cuddle up", "Sing lullaby", "Share secrets"] },
-    { text: "The day ends perfectly at home. Hearts are full 💖", choices: ["End the adventure 🌙"] }
-  ]
+  cityAdventure: {
+    0: { text:"The sun is shining and you feel that today could be extraordinary. Do you grab a coffee first to energize or head straight into the unknown streets?", 
+         choices:[{text:"Coffee first, savoring every sip and feeling the aroma wrap around us", next:1},
+                  {text:"Head straight out, letting curiosity guide our every step through the city", next:2}]},
+    1: { text:"With coffee in hand, a street festival appears with music and dancers. Do we join in and make a scene, or just watch quietly and enjoy the energy?", 
+         choices:[{text:"Join in, dancing without a care and laughing until our cheeks hurt", next:3},
+                  {text:"Watch quietly, sharing knowing glances and soft smiles", next:4}]},
+    2: { text:"Walking through alleys and hidden streets, we find a wall covered in colorful murals. Do we explore every corner and take photos, or just keep wandering?", 
+         choices:[{text:"Explore fully, taking photos and discovering little hidden gems", next:3},
+                  {text:"Keep wandering, letting the city surprise us in unexpected ways", next:4}]},
+    3: { text:"The laughter continues as we stroll. A small café catches your eye. Do we stop for a warm drink or continue adventuring?", 
+         choices:[{text:"Stop for a warm drink, letting the cozy atmosphere envelop us", next:5},
+                  {text:"Continue adventuring, chasing the feeling of discovery", next:6}]},
+    4: { text:"The calm quiet gives a special feeling. Hold hands and enjoy the gentle walk together, or explore separately and see what each path offers?", 
+         choices:[{text:"Hold hands tightly, feeling connected with every step", next:5},
+                  {text:"Wander separately, then reunite and share discoveries", next:6}]},
+    5: { text:"Evening arrives and the sky glows orange. Do we chase the perfect sunset photo or find a cozy spot to sit and talk about life?", 
+         choices:[{text:"Chase the sunset, laughing when we almost miss the light", next:7},
+                  {text:"Sit quietly, sharing secrets and dreams as the sky changes colors", next:8}]},
+    6: { text:"A small street musician starts playing a tune we both love. Do we stop and listen, or keep wandering letting music fade behind us?", 
+         choices:[{text:"Stop and listen, letting the music become part of our memories", next:7},
+                  {text:"Keep wandering, letting the city be our soundtrack", next:8}]},
+    7: { text:"The night feels magical and alive. End it by sharing a heartfelt secret or a playful challenge?", 
+         choices:[{text:"Share a heartfelt secret, letting emotions flow freely", next:9},
+                  {text:"Play a silly challenge, laughing until our bellies hurt", next:9}]},
+    8: { text:"Nightfall. Time to say goodbye for now. Do we hug with lingering warmth or a gentle kiss on the cheek?", 
+         choices:[{text:"Hug tightly, feeling the warmth linger even as we part", next:9},
+                  {text:"Cheek kiss, soft and tender, making the goodbye sweet", next:9}]},
+    9: { text:"The day ends perfectly. Hearts are full and memories unforgettable 💖", choices:[{text:"Restart adventure 🔁", next:0}]}
+  },
+
+  cafeBowlingAdventure: {
+    0: { text:"You arrive at the cozy café. Do you order a complex coffee drink to savor, or a sweet pastry to indulge in?", 
+         choices:[{text:"Order a complex coffee, enjoying the warmth and aroma with every sip", next:1},
+                  {text:"Pick a sweet pastry, sharing bites and laughter", next:2}]},
+    1: { text:"Coffee in hand, you choose to sit by the window and watch the street or in a quiet corner together?", 
+         choices:[{text:"Window seat, watching the world go by while sipping slowly", next:3},
+                  {text:"Quiet corner, leaning into each other sharing small smiles and jokes", next:3}]},
+    2: { text:"Pastries make you playful. Do you feed each other or sneak bites while teasing?", 
+         choices:[{text:"Feed each other and laugh at the mess", next:3},
+                  {text:"Sneak bites playfully, pretending to steal each other's treats", next:3}]},
+    3: { text:"After café time, we head to the bowling alley. Do you try to impress with strikes or just have fun?", 
+         choices:[{text:"Aim for strikes, concentrating and joking at each attempt", next:4},
+                  {text:"Play casually, laughing and cheering no matter the result", next:4}]},
+    4: { text:"Your first throw: perfect strike, decent spare, or gutter ball? Each affects the mood!", 
+         choices:[{text:"Strike! Loud celebration and playful boasting", next:5},
+                  {text:"Spare! Good effort with high fives all around", next:6},
+                  {text:"Gutter! Laugh at failure and enjoy the silliness", next:7}]},
+    5: { text:"Strike boosts confidence. Do you tease me or stay humble?", 
+         choices:[{text:"Tease playfully, making me laugh and blush", next:8},
+                  {text:"Stay humble, sharing proud smiles", next:8}]},
+    6: { text:"Spare is fun. Do you throw again ambitiously or take it easy?", 
+         choices:[{text:"Throw ambitiously, hoping for a strike", next:5},
+                  {text:"Take it easy, enjoying the moment", next:8}]},
+    7: { text:"Gutter makes you laugh. Do you try again carefully or embrace chaos?", 
+         choices:[{text:"Try again carefully, determined", next:6},
+                  {text:"Embrace chaos, laughing at the unpredictability", next:8}]},
+    8: { text:"Game over. Do you grab an ice cream or take a walk to discuss favorite moments?", 
+         choices:[{text:"Ice cream, laughing over who won", next:9},
+                  {text:"Walk together, holding hands and sharing highlights", next:9}]},
+    9: { text:"The day ends perfectly. Memories and laughter everywhere 💖", choices:[{text:"Restart adventure 🔁", next:0}]}
+  },
+
+  stayHomeAdventure: {
+    0: { text:"Morning together. Do you make breakfast together, or stay in bed longer sharing warmth?", 
+         choices:[{text:"Make breakfast, laughing at clumsy attempts", next:1},
+                  {text:"Stay in bed, sharing soft touches and sleepy smiles", next:2}]},
+    1: { text:"Breakfast done. Play a strategic board game or build a magical blanket fort?", 
+         choices:[{text:"Board game, teasing and strategizing", next:3},
+                  {text:"Fort, creating a cozy little world together", next:4}]},
+    2: { text:"Still cozy. Watch cartoons and share nostalgia or read favorite books aloud?", 
+         choices:[{text:"Cartoons, laughing at silly moments", next:3},
+                  {text:"Read books, making voices and sharing imagination", next:4}]},
+    3: { text:"Snack time! Bake cookies, making a mess but delicious, or make colorful smoothies?", 
+         choices:[{text:"Bake cookies, tasting and making jokes", next:5},
+                  {text:"Smoothies, experimenting with funny flavors", next:6}]},
+    4: { text:"Creative moment. Draw each other or write silly poems?", 
+         choices:[{text:"Draw, laughing at artistic fails", next:5},
+                  {text:"Poems, reading aloud with dramatic flair", next:6}]},
+    5: { text:"Evening comes. Watch a romantic movie or dance around the living room?", 
+         choices:[{text:"Movie, cuddling and reacting to every scene", next:7},
+                  {text:"Dance, laughing at clumsy moves", next:8}]},
+    6: { text:"Quiet moment. Share secrets or meditate together?", 
+         choices:[{text:"Share secrets, deepening our bond", next:7},
+                  {text:"Meditate, feeling peaceful together", next:8}]},
+    7: { text:"Nighttime. Stargazing on the balcony or telling bedtime stories?", 
+         choices:[{text:"Stargazing, making wishes and holding hands", next:9},
+                  {text:"Stories, laughing and winding down", next:9}]},
+    8: { text:"Fun continues. Sing lullabies or share a sweet midnight snack?", 
+         choices:[{text:"Sing lullabies, laughing at silly tunes", next:9},
+                  {text:"Snack, sharing bites and teasing", next:9}]},
+    9: { text:"Perfect cozy day together. Hearts full, memories engraved 💖", choices:[{text:"Restart adventure 🔁", next:0}]}
+  }
 };
 
-let currentAdventure = adventures.cityAdventure; // default
+let currentAdventure = adventures.cityAdventure;
 let step = 0;
 
 function startStory() {
@@ -225,18 +253,11 @@ function startStory() {
 function nextScene(i) {
   const scene = currentAdventure[i];
   storyEl.innerHTML = `<p>${scene.text}</p>`;
-  scene.choices.forEach(choiceText => {
+  scene.choices.forEach(c => {
     const b = document.createElement("button");
     b.className = "choice";
-    b.textContent = choiceText;
-    b.onclick = () => {
-      step++;
-      if (step < currentAdventure.length) {
-        nextScene(step);
-      } else {
-        storyEl.innerHTML = "<p>The adventure ends perfectly! 💖</p>";
-      }
-    };
+    b.textContent = c.text;
+    b.onclick = () => nextScene(c.next);
     storyEl.appendChild(b);
   });
 }
