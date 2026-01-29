@@ -34,10 +34,9 @@ section {
   margin: auto;
 }
 section.active { display: block; }
-input, select { padding: 10px; border-radius: 10px; border: none; margin: 5px; }
+input { padding: 10px; border-radius: 10px; border: none; margin: 5px; }
 img { max-width: 90%; border-radius: 20px; margin-top: 20px; }
-.card { margin-bottom: 20px; }
-.choice { display: block; margin: 10px auto; }
+.choice { display:block; margin: 10px auto; }
 </style>
 </head>
 <body>
@@ -63,113 +62,99 @@ img { max-width: 90%; border-radius: 20px; margin-top: 20px; }
 </section>
 
 <section id="adventure">
-<div class="card">
-<h2>Choose Our Love Adventure 🎭</h2>
+<div>
+<h2>Our Day Together 🎭</h2>
 <p>Name:</p>
 <input placeholder="Your name 💕" />
 
-<p>Pick your adventure:</p>
-<select id="adventureSelect">
-  <option value="cityAdventure">Get lost in a city</option>
-  <option value="cafeBowlingAdventure">Cafe & Bowling day</option>
-  <option value="stayHomeAdventure">Stay home together</option>
-</select>
-
-<button class="choice" onclick="startStory()">Start the story ✨</button>
+<div id="story"></div>
+<button id="startAdventure" class="choice">Start the adventure ✨</button>
 </div>
-
-<div id="story" class="card" style="display:none;"></div>
 </section>
 
 <section id="art">
-<div class="card">
 <h2>Art / Drawing 🎨</h2>
 <p>This reminded me of us.</p>
 <img src="PASTE_IMAGE_URL_HERE" alt="Art of us">
-</div>
 </section>
 
 <script>
-// Section switcher
 function showSection(id){
   document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
   document.getElementById(id).classList.add("active");
 }
 
-// Adventure story
 const storyEl = document.getElementById("story");
-const adventures = {
-  cityAdventure: {
-    0: { text:"You wake up feeling adventurous. Coffee first or hit the streets immediately?", 
-         choices:[{text:"Coffee first, savoring aroma", next:1},{text:"Hit the streets, curiosity guides", next:2}]},
-    1: { text:"Coffee boosts energy. Spot a street festival. Join in or observe quietly?", 
-         choices:[{text:"Join in, dance and laugh", next:3},{text:"Observe quietly, sharing soft smiles", next:4}]},
-    2: { text:"Exploring alleys, discover murals. Explore fully or keep wandering?", 
-         choices:[{text:"Explore fully, take photos", next:3},{text:"Keep wandering, let city surprise", next:4}]},
-    3: { text:"A cozy café appears. Stop or keep adventuring?", 
-         choices:[{text:"Stop for warm drink", next:5},{text:"Keep adventuring", next:6}]},
-    4: { text:"Quiet walk. Hold hands or explore separately?", 
-         choices:[{text:"Hold hands", next:5},{text:"Explore separately", next:6}]},
-    5: { text:"Evening. Chase sunset photo or sit and talk?", 
-         choices:[{text:"Chase sunset", next:7},{text:"Sit and talk", next:8}]},
-    6: { text:"Street musician plays favorite tune. Stop and listen or keep wandering?", 
-         choices:[{text:"Stop and listen", next:7},{text:"Keep wandering", next:8}]},
-    7: { text:"Night feels magical. Heartfelt secret or playful challenge?", 
-         choices:[{text:"Share heartfelt secret", next:9},{text:"Playful challenge", next:9}]},
-    8: { text:"Nightfall. Hug tightly or gentle cheek kiss?", 
-         choices:[{text:"Hug tightly", next:9},{text:"Cheek kiss", next:9}]},
-    9: { text:"Day ends perfectly 💖", choices:[{text:"Restart adventure 🔁", next:0}]}
-  },
-  cafeBowlingAdventure: {
-    0: { text:"At the café. Order coffee or sweet pastry?", 
-         choices:[{text:"Coffee, enjoy aroma", next:1},{text:"Pastry, share bites", next:2}]},
-    1: { text:"Sit by window or corner?", choices:[{text:"Window, watch street", next:3},{text:"Corner, lean close", next:3}]},
-    2: { text:"Playful pastry. Feed each other or sneak bites?", 
-         choices:[{text:"Feed each other", next:3},{text:"Sneak bites", next:3}]},
-    3: { text:"Head to bowling. Try to impress or just have fun?", 
-         choices:[{text:"Aim for strikes", next:4},{text:"Play casually", next:4}]},
-    4: { text:"First throw: strike, spare, or gutter?", 
-         choices:[{text:"Strike!", next:5},{text:"Spare!", next:6},{text:"Gutter!", next:7}]},
-    5: { text:"Strike! Tease or stay humble?", choices:[{text:"Tease playfully", next:8},{text:"Stay humble", next:8}]},
-    6: { text:"Spare! Throw ambitiously or take it easy?", choices:[{text:"Throw ambitiously", next:5},{text:"Take it easy", next:8}]},
-    7: { text:"Gutter! Try again carefully or embrace chaos?", choices:[{text:"Try carefully", next:6},{text:"Embrace chaos", next:8}]},
-    8: { text:"Game over. Ice cream or walk?", choices:[{text:"Ice cream", next:9},{text:"Walk", next:9}]},
-    9: { text:"Perfect day 💖", choices:[{text:"Restart adventure 🔁", next:0}]}
-  },
-  stayHomeAdventure: {
-    0: { text:"Morning together. Make breakfast or stay in bed?", 
-         choices:[{text:"Make breakfast", next:1},{text:"Stay in bed", next:2}]},
-    1: { text:"Breakfast done. Board game or blanket fort?", 
-         choices:[{text:"Board game", next:3},{text:"Fort", next:4}]},
-    2: { text:"Cozy bed. Watch cartoons or read aloud?", 
-         choices:[{text:"Cartoons", next:3},{text:"Read aloud", next:4}]},
-    3: { text:"Snack time! Bake cookies or make smoothies?", 
-         choices:[{text:"Bake cookies", next:5},{text:"Smoothies", next:6}]},
-    4: { text:"Creative moment. Draw or write poems?", 
-         choices:[{text:"Draw", next:5},{text:"Poems", next:6}]},
-    5: { text:"Evening. Movie or dance?", choices:[{text:"Movie", next:7},{text:"Dance", next:8}]},
-    6: { text:"Quiet moment. Share secrets or meditate?", choices:[{text:"Share secrets", next:7},{text:"Meditate", next:8}]},
-    7: { text:"Nighttime. Stargazing or bedtime stories?", choices:[{text:"Stargazing", next:9},{text:"Stories", next:9}]},
-    8: { text:"Fun continues. Sing or snack?", choices:[{text:"Sing", next:9},{text:"Snack", next:9}]},
-    9: { text:"Perfect cozy day 💖", choices:[{text:"Restart adventure 🔁", next:0}]}
-  }
+
+const story = {
+0: {text:"Morning: You wake up together. How do you start the day?", choices:[
+  {text:"Go wander around the city, feeling adventurous", next:1},
+  {text:"Go out for fun activities like bowling or cafe hopping", next:2},
+  {text:"Stay cozy at home, snuggling and chatting", next:3}
+]},
+1: {text:"You wander around the city. Do you stop at a street performer, or explore hidden alleys?", choices:[
+  {text:"Watch the performer, cheer and take photos", next:4},
+  {text:"Explore hidden alleys, discover cute shops", next:4},
+  {text:"Sit on a bench and people-watch", next:4}
+]},
+2: {text:"At the cafe and bowling alley. What to do first?", choices:[
+  {text:"Coffee first, enjoy aromas and small talk", next:5},
+  {text:"Bowling first, try to impress each other", next:6},
+  {text:"Split time: quick coffee then bowling", next:6}
+]},
+3: {text:"Cozy morning in bed. Read stories aloud or play games?", choices:[
+  {text:"Read a story aloud, share laughs and feelings", next:7},
+  {text:"Play cards or a small board game", next:7},
+  {text:"Just cuddle and chat about dreams", next:7}
+]},
+4: {text:"Morning done! Time for lunch. What do you choose?", choices:[
+  {text:"Street food: try quirky dishes together", next:8},
+  {text:"Sit-down restaurant for something fancy", next:8},
+  {text:"Grab a quick bite and continue exploring", next:8}
+]},
+5: {text:"Coffee enjoyed. Afternoon plans?", choices:[
+  {text:"Bowling, strike or miss, playful fun", next:6},
+  {text:"Walk in the park and talk", next:9},
+  {text:"Go shopping nearby for little gifts", next:9}
+]},
+6: {text:"Bowling! First throw: strike, spare, or gutter?", choices:[
+  {text:"Strike! Celebrate together", next:10},
+  {text:"Spare! High-five and laugh", next:10},
+  {text:"Gutter 😅, laugh at the fail", next:10}
+]},
+7: {text:"Cozy morning finished. Lunch time?", choices:[
+  {text:"Cook something together at home", next:8},
+  {text:"Order delivery and make it fun", next:8},
+  {text:"Go out to nearby cafe", next:8}
+]},
+8: {text:"After lunch, afternoon options?", choices:[
+  {text:"Relax in a park, feed pigeons, talk", next:9},
+  {text:"Go to an art gallery or small museum", next:9},
+  {text:"Walk around town and explore more shops", next:9}
+]},
+9: {text:"Afternoon continues. Do you want some fun challenge?", choices:[
+  {text:"Mini game contest: silly bets", next:10},
+  {text:"Take selfies at scenic spots", next:10},
+  {text:"Sit and people-watch, chat deeply", next:10}
+]},
+10: {text:"Late afternoon. Decide on dinner plans.", choices:[
+  {text:"Cook together at home and enjoy the process", next:11},
+  {text:"Go to a favorite restaurant nearby", next:11},
+  {text:"Try a new cuisine somewhere adventurous", next:11}
+]},
+11: {text:"Night falls. How to end the perfect day?", choices:[
+  {text:"Stargazing outside, share secrets quietly", next:12},
+  {text:"Cuddle on the couch and talk about life", next:12},
+  {text:"Go for a night walk holding hands", next:12}
+]},
+12: {text:"The day ends beautifully 💖. Do you want to restart the adventure?", choices:[
+  {text:"Restart adventure 🔁", next:0}
+]}
 };
 
-let currentAdventure = adventures.cityAdventure;
-let step = 0;
-
-function startStory() {
-  const selected = document.getElementById("adventureSelect").value;
-  currentAdventure = adventures[selected];
-  step = 0;
-  storyEl.style.display = "block";
-  nextScene(step);
-}
-
 function nextScene(i){
-  const scene = currentAdventure[i];
-  storyEl.innerHTML = `<p>${scene.text}</p>`;
-  scene.choices.forEach(c => {
+  storyEl.innerHTML = `<p>${story[i].text}</p>`;
+  story[i].choices.forEach(c=>{
     const b = document.createElement("button");
     b.className = "choice";
     b.textContent = c.text;
@@ -177,6 +162,12 @@ function nextScene(i){
     storyEl.appendChild(b);
   });
 }
+
+document.getElementById("startAdventure").onclick = () => {
+  storyEl.style.display = "block";
+  nextScene(0);
+};
 </script>
+
 </body>
 </html>
