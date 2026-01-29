@@ -5,12 +5,13 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
-  overflow-x: hidden;
 }
+
 header {
   padding: 30px;
   background: linear-gradient(135deg, #ff5f8f, #c77dff);
 }
+
 button {
   margin: 10px;
   padding: 12px 20px;
@@ -21,61 +22,48 @@ button {
   font-size: 16px;
   cursor: pointer;
 }
+
 button:hover {
   background: #ff3f7f;
 }
+
 section {
   display: none;
   padding: 30px;
   max-width: 800px;
   margin: auto;
 }
+
 section.active {
   display: block;
 }
+
 input {
   padding: 10px;
   border-radius: 10px;
   border: none;
   margin: 5px;
 }
+
 img {
   max-width: 90%;
   border-radius: 20px;
   margin-top: 20px;
 }
 
-/* Floating hearts */
+/* ------------------- HEARTS ------------------- */
 .heart {
   position: fixed;
-  width: 20px;
-  height: 20px;
-  background: pink;
+  bottom: -20px;
+  font-size: 22px;
+  animation: floatUp 9s linear forwards;
   opacity: 0.5;
-  pointer-events: none;
-  transform: rotate(45deg);
-  animation: floatUp linear infinite;
-  z-index: 1;
-}
-.heart::before,
-.heart::after {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: pink;
-  border-radius: 50%;
-}
-.heart::before {
-  top: -10px;
-  left: 0;
-}
-.heart::after {
-  left: -10px;
-  top: 0;
+  pointer-events: none; /* hearts won't block clicks */
+  user-select: none;    /* can't select them */
+  z-index: 9999;
 }
 
 @keyframes floatUp {
-  0% { transform: translateY(100vh) rotate(45deg); }
-  100% { transform: translateY(-50px) rotate(45deg); }
+  from { transform: translateY(0); opacity: 0.5; }
+  to { transform: translateY(-110vh); opacity: 0; }
 }
