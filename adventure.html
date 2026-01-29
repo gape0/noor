@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Our Adventure 🎭</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <h1>Our Adventure 🎭</h1>
+  <a href="index.html"><button class="nav-button">Home</button></a>
+  <a href="love.html"><button class="nav-button">Things I Love</button></a>
+  <a href="adventure.html"><button class="nav-button">Our Adventure</button></a>
+  <a href="art.html"><button class="nav-button">Art</button></a>
+</header>
+
+<section>
+  <h3>Create Your Character</h3>
+  <p>Name:</p>
+  <input placeholder="Your name 💕" />
+  <p>Class:</p>
+  <input value="Chaotic Romantic" disabled />
+  <p>Special Ability:</p>
+  <input value="Turns ordinary moments into memories" disabled />
+
+  <hr style="margin: 30px 0;">
+
+  <div id="adventure-content">
+    <p>Click a choice below to start the adventure!</p>
+    <button onclick="showAdventureStep(0)">Start Adventure</button>
+  </div>
+</section>
+
+<script src="js/main.js"></script>
+</body>
+</html>
